@@ -1,11 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Language } from '../types/portfolio';
 import { TRANSLATIONS } from '../data/translations';
-import {
-  Terminal as TerminalIcon,
-  RefreshCw,
-  CornerDownLeft,
-} from 'lucide-react';
+import { RefreshCw, CornerDownLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface TerminalSectionProps {
@@ -18,6 +14,9 @@ interface CommandLog {
   output: string;
   isError?: boolean;
 }
+
+// '/my-portfolio/' on GitHub Pages, '/' in local dev
+const BASE = import.meta.env.BASE_URL;
 
 /**
  * Triggers a clean, direct browser download of the PDF file to the Downloads folder
@@ -57,7 +56,6 @@ const downloadPdfFile = async (filePath: string, fileName: string) => {
 
 export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCvModal }) => {
   const t = TRANSLATIONS[lang].terminal;
-  const isRtl = lang === 'ar';
 
   const [inputVal, setInputVal] = useState('');
   const [history, setHistory] = useState<CommandLog[]>([
@@ -138,7 +136,7 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
       lower === 'download cv flutter' ||
       lower === 'flutter cv'
     ) {
-      downloadPdfFile('/Haydar_Abdo_Flutter_CV.pdf', 'Haydar_Abdo_Flutter_CV.pdf');
+      downloadPdfFile(`${BASE}Haydar_Abdo_Flutter_CV.pdf`, 'Haydar_Abdo_Flutter_CV.pdf');
       response =
         '[✓] Direct download initiated: /Haydar_Abdo_Flutter_CV.pdf\n' +
         '[✓] Saving file to Downloads folder: "Haydar_Abdo_Flutter_CV.pdf" (PDF Document, ~380 KB)';
@@ -149,7 +147,10 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
       lower === 'cyber cv' ||
       lower === 'cv pentest'
     ) {
-      downloadPdfFile('/Haydar_Abdo_Cyber_Security_CV.pdf', 'Haydar_Abdo_Cyber_Security_CV.pdf');
+      downloadPdfFile(
+        `${BASE}Haydar_Abdo_Cyber_Security_CV.pdf`,
+        'Haydar_Abdo_Cyber_Security_CV.pdf'
+      );
       response =
         '[✓] Direct download initiated: /Haydar_Abdo_Cyber_Security_CV.pdf\n' +
         '[✓] Saving file to Downloads folder: "Haydar_Abdo_Cyber_Security_CV.pdf" (PDF Document, ~366 KB)';
@@ -160,7 +161,7 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
       lower === 'download cv ai' ||
       lower === 'ai cv'
     ) {
-      downloadPdfFile('/Haydar_Abdo_AI_CV.pdf', 'Haydar_Abdo_AI_CV.pdf');
+      downloadPdfFile(`${BASE}Haydar_Abdo_AI_CV.pdf`, 'Haydar_Abdo_AI_CV.pdf');
       response =
         '[✓] Direct download initiated: /Haydar_Abdo_AI_CV.pdf\n' +
         '[✓] Saving file to Downloads folder: "Haydar_Abdo_AI_CV.pdf" (PDF Document, ~345 KB)';
@@ -240,15 +241,18 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
   ];
 
   return (
-    <section id="terminal" className="py-16 sm:py-20 border-t border-slate-200/80 bg-white dark:border-slate-800/80 dark:bg-slate-950 font-mono">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section
+      id="terminal"
+      className="py-12 sm:py-20 border-t border-slate-200/80 bg-white dark:border-slate-800/80 dark:bg-slate-950 font-mono"
+    >
+      <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 0.5 }}
-          className="max-w-2xl font-sans"
+          className="max-w-2xl font-sans px-1 sm:px-0"
         >
           <p className="text-xs font-semibold tracking-wider text-emerald-600 uppercase dark:text-emerald-400">
             {lang === 'ar' ? 'بيئة سطر الأوامر التفاعلية' : 'Interactive Sandbox'}
@@ -267,45 +271,46 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: '-30px' }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-8 overflow-hidden rounded-xl border border-slate-300 bg-slate-950 shadow-2xl dark:border-slate-800 text-slate-200 text-left"
+          className="mt-6 sm:mt-8 overflow-hidden rounded-lg sm:rounded-xl border border-slate-300 bg-slate-950 shadow-2xl dark:border-slate-800 text-slate-200 text-left"
           dir="ltr"
         >
           {/* Terminal Title Bar */}
-          <div className="flex items-center justify-between border-b border-slate-800 bg-slate-900 px-4 py-2.5">
-            <div className="flex items-center gap-2">
-              <span className="h-3 w-3 rounded-full bg-rose-500/80 inline-block" />
-              <span className="h-3 w-3 rounded-full bg-amber-500/80 inline-block" />
-              <span className="h-3 w-3 rounded-full bg-emerald-500/80 inline-block" />
-              <span className="ml-2 text-xs font-medium text-slate-400">
-                haydar@dev-workstation:~ (bash)
+          <div className="flex items-center justify-between gap-2 border-b border-slate-800 bg-slate-900 px-3 sm:px-4 py-2.5">
+            <div className="flex min-w-0 items-center gap-2">
+              <span className="inline-block h-3 w-3 shrink-0 rounded-full bg-rose-500/80" />
+              <span className="inline-block h-3 w-3 shrink-0 rounded-full bg-amber-500/80" />
+              <span className="inline-block h-3 w-3 shrink-0 rounded-full bg-emerald-500/80" />
+              <span className="ml-2 truncate text-[11px] sm:text-xs font-medium text-slate-400">
+                <span className="hidden sm:inline">haydar@dev-workstation:~ (bash)</span>
+                <span className="sm:hidden">haydar@dev:~</span>
               </span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-slate-500">
-              <motion.button
-                whileHover={{ scale: 1.1, rotate: 90 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => setHistory([])}
-                className="hover:text-slate-300 transition-colors cursor-pointer"
-                title="Clear terminal"
-              >
-                <RefreshCw className="h-3.5 w-3.5" />
-              </motion.button>
-            </div>
+            <motion.button
+              whileHover={{ scale: 1.1, rotate: 90 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setHistory([])}
+              aria-label="Clear terminal"
+              title="Clear terminal"
+              className="shrink-0 p-1.5 text-slate-500 hover:text-slate-300 transition-colors cursor-pointer"
+            >
+              <RefreshCw className="h-3.5 w-3.5" />
+            </motion.button>
           </div>
 
           {/* Terminal Output Body */}
           <div
             ref={terminalBodyRef}
-            className="p-4 sm:p-6 max-h-[380px] overflow-y-auto space-y-4 text-xs sm:text-[13px] leading-relaxed"
+            className="max-h-[55vh] min-h-[220px] sm:max-h-[420px] overflow-y-auto overscroll-contain p-3 sm:p-6 space-y-3 sm:space-y-4 text-[11px] sm:text-xs md:text-[13px] leading-relaxed"
           >
             {history.map((item, idx) => (
               <div key={idx} className="space-y-1">
-                <div className="flex items-center gap-2 text-emerald-400">
-                  <span className="text-slate-500">haydar@engineers:~$</span>
-                  <span className="font-semibold text-white">{item.command}</span>
+                <div className="flex flex-wrap items-baseline gap-x-2 text-emerald-400">
+                  <span className="hidden sm:inline text-slate-500">haydar@engineers:~$</span>
+                  <span className="sm:hidden text-slate-500">$</span>
+                  <span className="font-semibold text-white break-all">{item.command}</span>
                 </div>
                 <div
-                  className={`whitespace-pre-wrap ${
+                  className={`whitespace-pre-wrap break-words ${
                     item.isError ? 'text-rose-400' : 'text-slate-300'
                   }`}
                 >
@@ -316,15 +321,17 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
           </div>
 
           {/* Quick Buttons Ribbon */}
-          <div className="border-t border-slate-800/80 bg-slate-900/60 px-4 py-2 flex flex-wrap items-center gap-1.5 text-xs">
-            <span className="text-slate-500 font-sans text-[11px] mr-1">CLI Presets:</span>
+          <div className="border-t border-slate-800/80 bg-slate-900/60 px-3 sm:px-4 py-2 flex flex-wrap items-center gap-1.5 text-xs">
+            <span className="w-full sm:w-auto text-slate-500 font-sans text-[11px] sm:mr-1">
+              CLI Presets:
+            </span>
             {quickCommands.map((qc) => (
               <motion.button
                 key={qc}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleCommand(qc)}
-                className="rounded bg-slate-800 px-2 py-0.5 text-[11px] font-mono text-emerald-300 hover:bg-slate-700 hover:text-white transition-colors cursor-pointer"
+                className="rounded bg-slate-800 px-2.5 py-1.5 sm:px-2 sm:py-0.5 text-[11px] font-mono text-emerald-300 hover:bg-slate-700 hover:text-white transition-colors cursor-pointer"
               >
                 {qc}
               </motion.button>
@@ -332,24 +339,34 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
           </div>
 
           {/* Command Input Row */}
-          <div className="flex items-center gap-2 border-t border-slate-800 bg-slate-900/90 px-4 py-3">
-            <span className="text-emerald-400 font-bold shrink-0">haydar@engineers:~$</span>
+          <div className="flex items-center gap-2 border-t border-slate-800 bg-slate-900/90 px-3 sm:px-4 py-2.5 sm:py-3">
+            <span className="shrink-0 font-bold text-emerald-400">
+              <span className="hidden sm:inline">haydar@engineers:~$</span>
+              <span className="sm:hidden">$</span>
+            </span>
             <input
               type="text"
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder={t.placeholder}
-              className="flex-1 bg-transparent text-xs sm:text-sm text-white focus:outline-none placeholder:text-slate-600"
+              aria-label="Terminal command input"
+              autoCapitalize="off"
+              autoCorrect="off"
+              autoComplete="off"
+              spellCheck={false}
+              enterKeyHint="send"
+              className="min-w-0 flex-1 bg-transparent text-base sm:text-sm text-white focus:outline-none placeholder:text-slate-600"
             />
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
               onClick={() => handleCommand()}
-              className="inline-flex items-center gap-1 rounded bg-emerald-600 px-2.5 py-1 text-xs font-semibold text-white hover:bg-emerald-500 transition-colors cursor-pointer"
+              aria-label={t.run}
+              className="shrink-0 inline-flex items-center gap-1 rounded bg-emerald-600 px-3 py-1.5 sm:px-2.5 sm:py-1 text-xs font-semibold text-white hover:bg-emerald-500 transition-colors cursor-pointer"
             >
-              <span>{t.run}</span>
-              <CornerDownLeft className="h-3 w-3" />
+              <span className="hidden sm:inline">{t.run}</span>
+              <CornerDownLeft className="h-3.5 w-3.5 sm:h-3 sm:w-3" />
             </motion.button>
           </div>
         </motion.div>
