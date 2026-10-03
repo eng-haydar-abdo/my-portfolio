@@ -24,7 +24,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
         variants={stagger(0.12)}
         initial="hidden"
         whileInView="show"
-        viewport={{ ...viewportOnce, amount: 0.5 }}
+        viewport={{ ...viewportOnce, amount: 0.1 }}
       >
         <motion.div variants={fadeUp}>
           <p className="font-medium text-slate-800 dark:text-slate-200">

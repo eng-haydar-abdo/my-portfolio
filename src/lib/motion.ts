@@ -3,7 +3,7 @@ import type { Variants } from 'motion/react';
 export const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
 // يشغّل الأنيميشن مرة واحدة فقط عند ظهور العنصر
-export const viewportOnce = { once: true, amount: 0.2 } as const;
+export const viewportOnce = { once: true, amount: 'some' } as const;
 
 export const stagger = (staggerChildren = 0.08, delayChildren = 0): Variants => ({
   hidden: {},

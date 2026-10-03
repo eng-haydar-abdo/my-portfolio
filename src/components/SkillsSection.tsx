@@ -123,7 +123,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, activeTrack 
                       className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs"
                       initial={{ scale: 0, rotate: -20 }}
                       whileInView={{ scale: 1, rotate: 0 }}
-                      viewport={{ once: true, amount: 0.5 }}
+                      viewport={{ once: true, amount: 0.1 }}
                       transition={{ type: 'spring', stiffness: 320, damping: 18, delay: 0.15 }}
                     >
                       {getCategoryIcon(category.track)}
@@ -144,7 +144,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, activeTrack 
                     variants={stagger(0.05, 0.2)}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true, amount: 0.2 }}
+                    viewport={{ once: true, amount: 0.1 }}
                   >
                     {category.skills.map((skill, idx) => (
                       <motion.div

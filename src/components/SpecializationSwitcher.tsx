@@ -48,7 +48,7 @@ export const SpecializationSwitcher: React.FC<SpecializationSwitcherProps> = ({
       className="w-full border-y border-slate-200/80 bg-slate-50/70 py-2 sm:py-2.5 dark:border-slate-800/80 dark:bg-slate-900/50 backdrop-blur-xs transition-colors"
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.5 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.5, ease: EASE_OUT }}
     >
       <div className="mx-auto flex max-w-7xl flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 px-3 sm:px-6 lg:px-8">

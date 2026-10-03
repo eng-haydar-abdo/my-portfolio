@@ -141,7 +141,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
           variants={stagger(0.15)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           {/* Direct Coordinates (5 cols) */}
           <motion.div variants={fadeUp} className="lg:col-span-5 space-y-4">

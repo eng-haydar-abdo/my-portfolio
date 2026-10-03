@@ -24,7 +24,7 @@ interface CountUpProps {
 
 export const CountUp: React.FC<CountUpProps> = ({ value, duration = 2.5, className }) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.6 });
+  const inView = useInView(ref, { once: true, amount: 0.1 });
   const reduceMotion = useReducedMotion();
 
   const useArabicDigits = /[٠-٩]/.test(value);

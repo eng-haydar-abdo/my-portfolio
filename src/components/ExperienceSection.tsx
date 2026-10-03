@@ -76,14 +76,14 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
                   className="absolute start-3 top-8 hidden sm:block h-3 w-3 -translate-x-1/2 rtl:translate-x-1/2 rounded-full border-2 border-emerald-500 bg-white ring-4 ring-emerald-500/10 dark:bg-slate-950"
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
-                  viewport={{ once: true, amount: 0.6 }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 18, delay: 0.15 }}
                 />
 
                 <motion.div
                   initial={{ opacity: 0, x: 32 * dir, y: 12 }}
                   whileInView={{ opacity: 1, x: 0, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.7, ease: EASE_OUT }}
                   whileHover={{ y: -3, transition: { duration: 0.2 } }}
                   className="relative rounded-xl border border-slate-200 bg-slate-50/50 p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900/40 transition-[border-color,box-shadow] hover:border-slate-300 hover:shadow-md dark:hover:border-slate-700"
@@ -110,7 +110,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
                       className="shrink-0"
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true, amount: 0.6 }}
+                      viewport={{ once: true, amount: 0.1 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.3 }}
                     >
                       <span className="inline-flex items-center gap-1 rounded-md border border-amber-200 bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/40 dark:text-amber-300">
@@ -132,7 +132,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
                     variants={stagger(0.08, 0.25)}
                     initial="hidden"
                     whileInView="show"
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.1 }}
                   >
                     {(isRtl ? exp.achievementsAr : exp.achievements).map((item, idx) => (
                       <motion.li key={idx} variants={fadeUp} className="flex items-start gap-2.5">
