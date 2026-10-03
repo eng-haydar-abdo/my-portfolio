@@ -124,7 +124,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
           whileInView="show"
           viewport={viewportOnce}
         >
-          <motion.p variants={fadeUp} className="text-xs font-semibold tracking-wider text-emerald-600 uppercase dark:text-emerald-400">
+          <motion.p variants={fadeUp} className="text-xs font-semibold tracking-wider text-emerald-700 uppercase dark:text-emerald-300">
             {isRtl ? 'بدء محادثة هندسية' : 'Initiate Communication'}
           </motion.p>
           <motion.h2 variants={fadeUp} className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -158,7 +158,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
                       <Mail className="h-4 w-4" />
                     </div>
                     <div>
-                      <p className="text-[11px] text-slate-400">{t.emailLabel}</p>
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400">{t.emailLabel}</p>
                       <a
                         href={`mailto:${CONTACT_CONFIG.recipientEmail}`}
                         className="font-semibold text-slate-900 hover:text-emerald-600 dark:text-white dark:hover:text-emerald-400 break-all"
@@ -170,7 +170,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
                   <motion.button
                     whileTap={{ scale: 0.85 }}
                     onClick={() => copyToClipboard(CONTACT_CONFIG.recipientEmail, 'email')}
-                    className="p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-white rounded transition-colors"
+                    aria-label={isRtl ? 'نسخ البريد الإلكتروني' : 'Copy email address'}
+                    className="p-1.5 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white rounded transition-colors"
                     title={isRtl ? 'نسخ البريد الإلكتروني' : 'Copy Email'}
                   >
                     <CopyIcon copied={copiedEmail} />
@@ -184,7 +185,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
                       <Phone className="h-4 w-4" />
                     </div>
                     <div>
-                      <p className="text-[11px] text-slate-400">{t.phoneLabel}</p>
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400">{t.phoneLabel}</p>
                       <a
                         href="https://wa.me/963934044938"
                         target="_blank"
@@ -198,7 +199,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
                   <motion.button
                     whileTap={{ scale: 0.85 }}
                     onClick={() => copyToClipboard('+963934044938', 'phone')}
-                    className="p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-white rounded transition-colors"
+                    aria-label={isRtl ? 'نسخ رقم الهاتف' : 'Copy phone number'}
+                    className="p-1.5 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white rounded transition-colors"
                     title={isRtl ? 'نسخ رقم الهاتف' : 'Copy Phone'}
                   >
                     <CopyIcon copied={copiedPhone} />
@@ -211,7 +213,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
                     <MapPin className="h-4 w-4" />
                   </div>
                   <div>
-                    <p className="text-[11px] text-slate-400">{t.locationLabel}</p>
+                    <p className="text-[11px] text-slate-600 dark:text-slate-400">{t.locationLabel}</p>
                     <p className="font-medium text-slate-900 dark:text-white">
                       {t.locationVal}
                     </p>
@@ -221,7 +223,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
 
               {/* Direct Recipient Assurance */}
               <div className="mt-5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 p-3 text-[11px] text-emerald-800 dark:text-emerald-300 flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
+                <ShieldCheck className="h-4 w-4 shrink-0 text-emerald-700 dark:text-emerald-300" />
                 <span>{t.recipientNotice}</span>
               </div>
 
@@ -299,7 +301,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
                           setSubmitted(false);
                           setFormData({ name: '', email: '', subject: 'flutter', message: '' });
                         }}
-                        className="rounded-lg bg-emerald-600 px-5 py-2.5 text-xs font-semibold text-white hover:bg-emerald-500 transition-colors cursor-pointer"
+                        className="rounded-lg bg-emerald-700 px-5 py-2.5 text-xs font-semibold text-white hover:bg-emerald-800 transition-colors cursor-pointer"
                       >
                         {isRtl ? 'إرسال رسالة أخرى' : 'Send Another Message'}
                       </motion.button>
@@ -321,7 +323,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
                         <Mail className="h-3.5 w-3.5 text-emerald-500" />
                         <span>{t.recipientNotice}</span>
                       </span>
-                      <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-mono">
+                      <span className="text-[10px] text-emerald-700 dark:text-emerald-300 font-mono">
                         Serverless Direct Delivery
                       </span>
                     </div>
@@ -445,7 +447,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ lang }) => {
                       disabled={isSubmitting}
                       whileHover={isSubmitting ? undefined : { y: -2 }}
                       whileTap={isSubmitting ? undefined : { scale: 0.98 }}
-                      className="group w-full inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-3 text-xs sm:text-sm font-semibold text-white hover:bg-emerald-500 disabled:opacity-60 disabled:cursor-not-allowed transition-colors shadow-xs cursor-pointer"
+                      className="group w-full inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 px-4 py-3 text-xs sm:text-sm font-semibold text-white hover:bg-emerald-800 disabled:opacity-60 disabled:cursor-not-allowed transition-colors shadow-xs cursor-pointer"
                     >
                       {isSubmitting ? (
                         <>

@@ -173,8 +173,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             whileTap={{ scale: 0.9 }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden inline-flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-100 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-800 shrink-0 cursor-pointer"
-            aria-label="Open mobile menu"
+            aria-label={mobileMenuOpen ? (isRtl ? 'إغلاق القائمة' : 'Close menu') : (isRtl ? 'فتح القائمة' : 'Open menu')}
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
@@ -197,12 +198,13 @@ export const Navbar: React.FC<NavbarProps> = ({
         {mobileMenuOpen && (
           <motion.div
             key="mobile-drawer"
+            id="mobile-navigation"
             className="overflow-hidden border-b border-slate-200 bg-white md:hidden dark:border-slate-800 dark:bg-slate-950"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1, transition: { duration: 0.3, ease: EASE_OUT } }}
             exit={{ height: 0, opacity: 0, transition: { duration: 0.2 } }}
           >
-            <nav className="flex flex-col gap-3 px-4 py-4 text-sm font-medium text-slate-600 dark:text-slate-300">
+            <nav aria-label={isRtl ? 'التنقل الرئيسي' : 'Main navigation'} className="flex flex-col gap-3 px-4 py-4 text-sm font-medium text-slate-600 dark:text-slate-300">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.href}
@@ -212,7 +214,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, ease: EASE_OUT, delay: 0.05 + i * 0.04 }}
                   className={`py-1.5 transition-colors hover:text-slate-900 dark:hover:text-white ${
-                    activeId === link.href.slice(1) ? 'text-emerald-600 dark:text-emerald-400' : ''
+                    activeId === link.href.slice(1) ? 'text-emerald-700 dark:text-emerald-300' : ''
                   }`}
                 >
                   {link.label}

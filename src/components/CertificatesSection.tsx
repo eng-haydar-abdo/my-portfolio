@@ -4,6 +4,7 @@ import { Certificate, Language } from '../types/portfolio';
 import { CERTIFICATES, TRANSLATIONS } from '../data/translations';
 import { Award, FileText, ExternalLink, X, QrCode, ShieldCheck } from 'lucide-react';
 import { fadeUp, stagger, viewportOnce, EASE_OUT } from '../lib/motion';
+import { useDialogAccessibility } from '../lib/useDialogAccessibility';
 
 interface CertificatesSectionProps {
   lang: Language;
@@ -17,6 +18,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
 
   const [filter, setFilter] = useState<Filter>('all');
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
+  const certificateDialogRef = useDialogAccessibility(!!selectedCert, () => setSelectedCert(null));
 
   const filteredCerts = CERTIFICATES.filter((item) => {
     if (filter === 'all') return true;
@@ -25,8 +27,8 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
 
   const filters: { key: Filter; label: string; active: string }[] = [
     { key: 'all', label: t.filterAll, active: 'bg-slate-900 dark:bg-slate-800' },
-    { key: 'certificate', label: t.filterCertificates, active: 'bg-emerald-600' },
-    { key: 'recommendation', label: t.filterLetters, active: 'bg-amber-600' },
+    { key: 'certificate', label: t.filterCertificates, active: 'bg-emerald-700' },
+    { key: 'recommendation', label: t.filterLetters, active: 'bg-amber-700' },
   ];
 
   return (
@@ -41,7 +43,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
           viewport={viewportOnce}
         >
           <div className="max-w-2xl">
-            <motion.p variants={fadeUp} className="text-xs font-semibold tracking-wider text-emerald-600 uppercase dark:text-emerald-400">
+          <motion.p variants={fadeUp} className="text-xs font-semibold tracking-wider text-emerald-700 uppercase dark:text-emerald-300">
               {lang === 'ar' ? 'الاعتمادات الموثقة والتوصيات' : 'Verified Credentials'}
             </motion.p>
             <motion.h2 variants={fadeUp} className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -63,6 +65,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
                 <button
                   key={f.key}
                   onClick={() => setFilter(f.key)}
+                  aria-pressed={isActive}
                   className={`relative rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
                     isActive
                       ? 'text-white'
@@ -89,7 +92,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
             {filteredCerts.map((cert, i) => {
               const isRec = cert.type === 'recommendation';
               return (
-                <motion.div
+                <motion.article
                   key={cert.id}
                   layout
                   initial={{ opacity: 0, y: 24 }}
@@ -98,12 +101,11 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
                   exit={{ opacity: 0, scale: 0.94, transition: { duration: 0.2 } }}
                   transition={{ duration: 0.5, ease: EASE_OUT, delay: (i % 3) * 0.08 }}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  onClick={() => setSelectedCert(cert)}
-                  className="cursor-pointer group flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-6 transition-[border-color,box-shadow] duration-200 hover:border-emerald-500 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-emerald-500"
+                  className="group flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-6 transition-[border-color,box-shadow] duration-200 hover:border-emerald-500 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-emerald-500"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                      <span className="flex items-center gap-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
                         {isRec ? (
                           <FileText className="h-4 w-4 text-amber-500" />
                         ) : (
@@ -113,7 +115,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
                       </span>
 
                       {cert.certId && (
-                        <span className="font-mono text-[10px] text-slate-400 dark:text-slate-500">
+                        <span className="font-mono text-[10px] text-slate-600 dark:text-slate-400">
                           ID: {cert.certId}
                         </span>
                       )}
@@ -133,17 +135,22 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
                   </div>
 
                   <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300">
-                    <span className="group-hover:text-emerald-500 transition-colors">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedCert(cert)}
+                      aria-haspopup="dialog"
+                      aria-label={`${t.viewCredential}: ${isRtl ? cert.titleAr : cert.title}`}
+                      className="group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors"
+                    >
                       {t.viewCredential}
-                    </span>
+                    </button>
                     <div className="flex items-center gap-1.5">
                       {cert.driveUrl && cert.driveUrl.trim().startsWith('http') && (
                         <a
                           href={cert.driveUrl.trim()}
                           target="_blank"
                           rel="noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-1 rounded bg-emerald-500/10 dark:bg-emerald-500/20 px-2 py-0.5 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+                          className="inline-flex items-center gap-1 rounded bg-emerald-500/10 dark:bg-emerald-500/20 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 transition-colors"
                           title={isRtl ? 'عرض في Google Drive' : 'Open in Google Drive'}
                         >
                           <span>Drive</span>
@@ -153,7 +160,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
                       <ExternalLink className="h-3.5 w-3.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
                     </div>
                   </div>
-                </motion.div>
+                </motion.article>
               );
             })}
           </AnimatePresence>
@@ -173,6 +180,11 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
             onClick={() => setSelectedCert(null)}
           >
             <motion.div
+              role="dialog"
+              ref={certificateDialogRef}
+              aria-modal="true"
+              aria-labelledby="certificate-dialog-title"
+              tabIndex={-1}
               className="relative w-full max-w-lg rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-slate-800 dark:bg-slate-900"
               initial={{ opacity: 0, scale: 0.94, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 320, damping: 28 } }}
@@ -181,20 +193,21 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
             >
               <button
                 onClick={() => setSelectedCert(null)}
-                className="absolute top-4 right-4 rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+                aria-label={isRtl ? 'إغلاق تفاصيل الشهادة' : 'Close certificate details'}
+                className="absolute top-4 right-4 rounded-lg p-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
 
               {/* Header Badge */}
-              <div className="flex items-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2">
+              <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700 dark:text-emerald-300 mb-2">
                 <ShieldCheck className="h-4 w-4" />
                 <span>Verified Academy Credential</span>
                 <span aria-hidden="true">·</span>
                 <span className="font-mono text-slate-500">{selectedCert.date}</span>
               </div>
 
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+              <h3 id="certificate-dialog-title" className="text-xl font-bold text-slate-900 dark:text-white">
                 {isRtl ? selectedCert.titleAr : selectedCert.title}
               </h3>
 
@@ -214,7 +227,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
                     Signed by: <strong>Alaa Darwish</strong>, Founder & CEO
                   </span>
                   {selectedCert.certId && (
-                    <span className="font-mono text-[11px] text-emerald-600 dark:text-emerald-400">
+                    <span className="font-mono text-[11px] text-emerald-700 dark:text-emerald-300">
                       ID: {selectedCert.certId}
                     </span>
                   )}

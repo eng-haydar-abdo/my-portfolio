@@ -3,6 +3,9 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Language, Track } from '../types/portfolio';
 import { TRANSLATIONS, PORTRAIT_IMAGE, GOOGLE_DRIVE_LINKS } from '../data/translations';
 import portraitPlaceholder from '../assets/images/haydar_profile_placeholder.jpg';
+import portrait320 from '../assets/images/optimized/portrait-320.webp';
+import portrait640 from '../assets/images/optimized/portrait-640.webp';
+import portrait960 from '../assets/images/optimized/portrait-960.webp';
 import { Terminal, ArrowDownRight, Award, ShieldCheck, Smartphone, GraduationCap, ExternalLink } from 'lucide-react';
 import { fadeUp, popIn, stagger, EASE_OUT } from '../lib/motion';
 
@@ -51,7 +54,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, activeTrack }) => {
             {/* Unboxed Status Metadata */}
             <motion.div
               variants={fadeUp}
-              className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-3 sm:mb-4"
+              className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-semibold text-emerald-700 dark:text-emerald-300 mb-3 sm:mb-4"
             >
               <span className="inline-block h-2 w-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
               <span>{t.badge}</span>
@@ -126,7 +129,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, activeTrack }) => {
                 href={GOOGLE_DRIVE_LINKS.cv.flutter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-xs transition-colors hover:bg-emerald-500 cursor-pointer"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-emerald-700 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-xs transition-colors hover:bg-emerald-800 cursor-pointer"
                 title={isRtl ? 'معاينة سيرة فلاتر في تبويب جديد (Google Drive)' : 'Preview Flutter CV in new tab (Google Drive)'}
               >
                 <Smartphone className="h-4 w-4 shrink-0" />
@@ -245,7 +248,9 @@ export const Hero: React.FC<HeroProps> = ({ lang, activeTrack }) => {
                   />
                   <img
                     src={PORTRAIT_IMAGE}
-                    alt="Eng Haydar Abdo"
+                    srcSet={`${portrait320} 320w, ${portrait640} 640w, ${portrait960} 960w`}
+                    sizes="(max-width: 639px) 80vw, (max-width: 1023px) 45vw, 40vw"
+                    alt={isRtl ? 'صورة شخصية للمهندس حيدر ثائر عبدو' : 'Portrait of Haydar Thaeer Abdo'}
                     referrerPolicy="no-referrer"
                     loading="eager"
                     fetchPriority="high"

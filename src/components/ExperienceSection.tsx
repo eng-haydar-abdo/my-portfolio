@@ -42,7 +42,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
           whileInView="show"
           viewport={viewportOnce}
         >
-          <motion.p variants={fadeUp} className="text-xs font-semibold tracking-wider text-emerald-600 uppercase dark:text-emerald-400">
+          <motion.p variants={fadeUp} className="text-xs font-semibold tracking-wider text-emerald-700 uppercase dark:text-emerald-300">
             {lang === 'ar' ? 'مسيرة العمل والتعليم' : 'Career Timeline'}
           </motion.p>
           <motion.h2 variants={fadeUp} className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -90,7 +90,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ lang }) =>
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     <div>
-                      <div className="flex items-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-1">
+                      <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700 dark:text-emerald-300 mb-1">
                         {getTypeIcon(exp.type)}
                         <span>{isRtl ? exp.organizationAr : exp.organization}</span>
                         <span aria-hidden="true" className="opacity-40">·</span>

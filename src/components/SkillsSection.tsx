@@ -31,7 +31,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, activeTrack 
 
   const filters: { key: SkillFilter; label: string; pill: string; activeText: string }[] = [
     { key: 'all', label: t.filterAll, pill: 'bg-white shadow-xs dark:bg-slate-800', activeText: 'text-slate-900 dark:text-white' },
-    { key: 'flutter', label: t.filterFlutter, pill: 'bg-white shadow-xs dark:bg-emerald-600', activeText: 'text-slate-900 dark:text-white' },
+    { key: 'flutter', label: t.filterFlutter, pill: 'bg-white shadow-xs dark:bg-emerald-700', activeText: 'text-slate-900 dark:text-white' },
     { key: 'cyber', label: t.filterCyber, pill: 'bg-white shadow-xs dark:bg-cyan-600', activeText: 'text-slate-900 dark:text-white' },
     { key: 'general', label: t.filterGeneral, pill: 'bg-white shadow-xs dark:bg-indigo-600', activeText: 'text-slate-900 dark:text-white' },
   ];
@@ -59,7 +59,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, activeTrack 
           viewport={viewportOnce}
         >
           <div className="max-w-2xl">
-            <motion.p variants={fadeUp} className="text-xs font-semibold tracking-wider text-emerald-600 uppercase dark:text-emerald-400">
+            <motion.p variants={fadeUp} className="text-xs font-semibold tracking-wider text-emerald-700 uppercase dark:text-emerald-300">
               {lang === 'ar' ? 'الخبرات التقنية والمنهجية' : 'Technical Proficiencies'}
             </motion.p>
             <motion.h2 variants={fadeUp} className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -81,6 +81,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, activeTrack 
                 <button
                   key={f.key}
                   onClick={() => setSelectedFilter(f.key)}
+                  aria-pressed={isActive}
                   className={`relative rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
                     isActive
                       ? f.activeText
@@ -177,7 +178,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ lang, activeTrack 
                 {/* Bottom Category Note */}
                 <div className="mt-4 pt-3 border-t border-slate-200/60 dark:border-slate-800/60 text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-between">
                   <span>{lang === 'ar' ? 'تطبيقات عملية ومشاريع واقعية' : 'Production-tested'}</span>
-                  <span className="font-mono text-emerald-600 dark:text-emerald-400">100% VERIFIED</span>
+                  <span className="font-mono text-emerald-700 dark:text-emerald-300">100% VERIFIED</span>
                 </div>
               </motion.div>
             ))}

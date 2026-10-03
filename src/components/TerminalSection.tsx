@@ -254,7 +254,7 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
           transition={{ duration: 0.5 }}
           className="max-w-2xl font-sans px-1 sm:px-0"
         >
-          <p className="text-xs font-semibold tracking-wider text-emerald-600 uppercase dark:text-emerald-400">
+          <p className="text-xs font-semibold tracking-wider text-emerald-700 uppercase dark:text-emerald-300">
             {lang === 'ar' ? 'بيئة سطر الأوامر التفاعلية' : 'Interactive Sandbox'}
           </p>
           <h2 className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -363,7 +363,7 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
               whileTap={{ scale: 0.96 }}
               onClick={() => handleCommand()}
               aria-label={t.run}
-              className="shrink-0 inline-flex items-center gap-1 rounded bg-emerald-600 px-3 py-1.5 sm:px-2.5 sm:py-1 text-xs font-semibold text-white hover:bg-emerald-500 transition-colors cursor-pointer"
+              className="shrink-0 inline-flex items-center gap-1 rounded bg-emerald-700 px-3 py-1.5 sm:px-2.5 sm:py-1 text-xs font-semibold text-white hover:bg-emerald-800 transition-colors cursor-pointer"
             >
               <span className="hidden sm:inline">{t.run}</span>
               <CornerDownLeft className="h-3.5 w-3.5 sm:h-3 sm:w-3" />

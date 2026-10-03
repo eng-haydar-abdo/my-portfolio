@@ -30,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
           <p className="font-medium text-slate-800 dark:text-slate-200">
             {isRtl ? 'م. حيدر ثائر عبدو' : 'Eng. Haydar Thaeer Abdo'}
           </p>
-          <p className="mt-0.5 text-[11px] text-slate-400 dark:text-slate-500">
+          <p className="mt-0.5 text-[11px] text-slate-600 dark:text-slate-400">
             © {new Date().getFullYear()} {t.rights} · {t.builtWith}
           </p>
         </motion.div>

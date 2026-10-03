@@ -10,6 +10,8 @@ export interface Project {
   taglineAr: string;
   category: 'flutter' | 'cyber' | 'web';
   image: string;
+  imageSrcSet?: string;
+  imagePlaceholder?: string;
   tags: string[];
   description: string;
   descriptionAr: string;

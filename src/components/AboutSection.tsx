@@ -32,7 +32,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ lang }) => {
           whileInView="show"
           viewport={viewportOnce}
         >
-          <motion.p variants={fadeUp} className="text-xs font-semibold tracking-wider text-emerald-600 uppercase dark:text-emerald-400">
+          <motion.p variants={fadeUp} className="text-xs font-semibold tracking-wider text-emerald-700 uppercase dark:text-emerald-300">
             {lang === 'ar' ? 'السيرة الأكاديمية والمهنية' : 'Academic & Professional Profile'}
           </motion.p>
           <motion.h2 variants={fadeUp} className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">

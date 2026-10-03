@@ -5,6 +5,7 @@ import { TRANSLATIONS, GOOGLE_DRIVE_LINKS, CV_DOWNLOAD_FILES } from '../data/tra
 import { X, Printer, Download, Copy, Check, Smartphone, ShieldCheck, GraduationCap, CheckCircle2, ExternalLink } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { EASE_OUT } from '../lib/motion';
+import { useDialogAccessibility } from '../lib/useDialogAccessibility';
 
 interface CvModalProps {
   isOpen: boolean;
@@ -31,6 +32,7 @@ export const CvModal: React.FC<CvModalProps> = ({
     initialTrack === 'cyber' ? 'cyber' : initialTrack === 'engineer' ? 'engineer' : 'flutter'
   );
   const [copied, setCopied] = useState(false);
+  const cvDialogRef = useDialogAccessibility(isOpen, onClose);
 
   const handleDownloadClick = async (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -167,8 +169,13 @@ Latakia University (2026). Specializing in Flutter mobile development and cybers
           transition={{ duration: 0.2 }}
           onClick={onClose}
         >
-          <motion.div
-            className="relative my-8 w-full max-w-4xl rounded-2xl border border-slate-200 bg-white p-4 sm:p-8 shadow-2xl dark:border-slate-800 dark:bg-slate-950 text-slate-900 dark:text-slate-100"
+        <motion.div
+          role="dialog"
+          ref={cvDialogRef}
+          aria-modal="true"
+          aria-labelledby="cv-dialog-title"
+          tabIndex={-1}
+          className="relative my-8 w-full max-w-4xl rounded-2xl border border-slate-200 bg-white p-4 sm:p-8 shadow-2xl dark:border-slate-800 dark:bg-slate-950 text-slate-900 dark:text-slate-100"
             initial={{ opacity: 0, scale: 0.95, y: 32 }}
             animate={{
               opacity: 1,
@@ -182,7 +189,7 @@ Latakia University (2026). Specializing in Flutter mobile development and cybers
             {/* Modal Controls Bar */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800 no-print">
               <div>
-                <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                <h2 id="cv-dialog-title" className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
                   {t.title}
                 </h2>
                 <p className="text-xs text-slate-500 dark:text-slate-400">
@@ -262,7 +269,8 @@ Latakia University (2026). Specializing in Flutter mobile development and cybers
                   whileTap={{ scale: 0.9 }}
                   transition={{ duration: 0.2 }}
                   onClick={onClose}
-                  className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+                  aria-label={t.closeModal}
+                  className="rounded-lg p-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
                 >
                   <X className="h-5 w-5" />
                 </motion.button>
@@ -281,7 +289,7 @@ Latakia University (2026). Specializing in Flutter mobile development and cybers
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, ease: EASE_OUT }}
-                  className="mt-1 text-xs sm:text-sm font-semibold text-emerald-600 dark:text-emerald-400"
+                  className="mt-1 text-xs sm:text-sm font-semibold text-emerald-700 dark:text-emerald-300"
                 >
                   {subtitleText}
                 </motion.p>
@@ -449,7 +457,7 @@ Latakia University (2026). Specializing in Flutter mobile development and cybers
                         href={fileInfo.localPath}
                         download={fileInfo.fileName}
                         onClick={(e) => handleDownloadClick(e, fileInfo.localPath, fileInfo.fileName)}
-                        className="group inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-500 shadow-xs transition-colors cursor-pointer"
+                        className="group inline-flex items-center gap-1.5 rounded-lg bg-emerald-700 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-800 shadow-xs transition-colors cursor-pointer"
                         title={isRtl ? 'تحميل مباشر لملف PDF' : 'Direct Download PDF file'}
                       >
                         <Download className="h-4 w-4 transition-transform duration-200 group-hover:translate-y-0.5" />

@@ -82,6 +82,12 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900 transition-colors duration-200 dark:bg-slate-950 dark:text-slate-100 flex flex-col font-sans">
+      <a
+        href="#main-content"
+        className="sr-only fixed left-3 top-3 z-[100] rounded-lg bg-white px-4 py-3 font-semibold text-slate-900 shadow-lg focus:not-sr-only focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700"
+      >
+        {lang === 'ar' ? 'تجاوز إلى المحتوى الرئيسي' : 'Skip to main content'}
+      </a>
       {/* Navigation */}
       <Navbar
         lang={lang}
@@ -97,7 +103,7 @@ export default function App() {
         lang={lang}
       />
 
-      <main className="flex-1">
+      <main id="main-content" tabIndex={-1} className="flex-1">
         {/* Hero Section */}
         <Hero
           lang={lang}

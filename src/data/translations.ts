@@ -5,6 +5,33 @@ import portraitImg from '../assets/images/haydar_profile.jpg';
 import foodAppImg from '../assets/images/project_flutter_food_1790628719717.jpg';
 import cyberLabImg from '../assets/images/project_cyber_security_1790628729875.jpg';
 import hstoreImg from '../assets/images/project_hstore_ecommerce_1790628740476.jpg';
+import food480 from '../assets/images/optimized/food-480.webp';
+import food800 from '../assets/images/optimized/food-800.webp';
+import food1200 from '../assets/images/optimized/food-1200.webp';
+import foodBlur from '../assets/images/optimized/food-blur.webp';
+import cyber480 from '../assets/images/optimized/cyber-480.webp';
+import cyber800 from '../assets/images/optimized/cyber-800.webp';
+import cyber1200 from '../assets/images/optimized/cyber-1200.webp';
+import cyberBlur from '../assets/images/optimized/cyber-blur.webp';
+import hstore480 from '../assets/images/optimized/hstore-480.webp';
+import hstore800 from '../assets/images/optimized/hstore-800.webp';
+import hstore1200 from '../assets/images/optimized/hstore-1200.webp';
+import hstoreBlur from '../assets/images/optimized/hstore-blur.webp';
+
+const projectImageSources = {
+  food: {
+    srcSet: `${food480} 480w, ${food800} 800w, ${food1200} 1200w`,
+    placeholder: foodBlur,
+  },
+  cyber: {
+    srcSet: `${cyber480} 480w, ${cyber800} 800w, ${cyber1200} 1200w`,
+    placeholder: cyberBlur,
+  },
+  hstore: {
+    srcSet: `${hstore480} 480w, ${hstore800} 800w, ${hstore1200} 1200w`,
+    placeholder: hstoreBlur,
+  },
+};
 
 export const PORTRAIT_IMAGE = portraitImg;
 
@@ -17,6 +44,8 @@ export const PROJECTS: Project[] = [
     taglineAr: 'فلاتر ودارت · بنية GetX لإدارة الحالة · تجربة طلبات فورية',
     category: 'flutter',
     image: foodAppImg,
+    imageSrcSet: projectImageSources.food.srcSet,
+    imagePlaceholder: projectImageSources.food.placeholder,
     tags: ['Flutter', 'Dart', 'GetX', 'REST API', 'Clean Architecture', 'Figma to Code'],
     description: 'A comprehensive, high-performance food delivery and cafe ordering application built with Flutter. Features clean architecture, reactive state management using GetX, dynamic cart calculation, localized currency, and customizable menu variants.',
     descriptionAr: 'تطبيق متكامل وسريع لطلب وجبات الطعام وخدمات المقاهي تم بناؤه باستخدام Flutter. يتميز بهيكلية برمجية نظيفة، وإدارة حالة تفاعلية عبر GetX، وسلة تسوق ذكية مع دعم متعدد اللغات وتتبع الطلبات.',
@@ -43,6 +72,8 @@ export const PROJECTS: Project[] = [
     taglineAr: 'الأمن الهجومي · استغلال ثغرة ProFTPD · تصعيد الصلاحيات لنظام لينكس',
     category: 'cyber',
     image: cyberLabImg,
+    imageSrcSet: projectImageSources.cyber.srcSet,
+    imagePlaceholder: projectImageSources.cyber.placeholder,
     tags: ['Kali Linux', 'Metasploit', 'Nmap', 'Privilege Escalation', 'OWASP', 'ProFTPD'],
     description: 'A rigorous Red Team engagement against the CyberX hardened lab (Ubuntu 16.04 LTS). Performed deep network enumeration, identified a ProFTPD 1.3.3c backdoor vulnerability, achieved initial access via Metasploit, performed WordPress-to-www-data lateral movement, and analyzed insecure file permissions to obtain full Root access.',
     descriptionAr: 'عملية تدقيق واختبار اختراق هجومي متقدمة لبيئة مختبر CyberX المبنية على Ubuntu 16.04 LTS. تم خلالها إجراء فحص شبكي دقيق، واكتشاف ثغرة الباب الخلفي في ProFTPD 1.3.3c، والحصول على جلسة Metasploit ثم الوصول لبيانات WordPress وتصعيد الصلاحيات لصلاحيات Root الكاملة مع توثيق تقرير الاختراق.',
@@ -68,6 +99,8 @@ export const PROJECTS: Project[] = [
     taglineAr: 'فلاتر ودارت · تصفح المنتجات · إدارة السلة والدفع الآمن',
     category: 'flutter',
     image: hstoreImg,
+    imageSrcSet: projectImageSources.hstore.srcSet,
+    imagePlaceholder: projectImageSources.hstore.placeholder,
     tags: ['Flutter', 'Dart', 'Provider', 'SQLite/Hive', 'REST API', 'E-Commerce'],
     description: 'A multi-vendor style mobile e-commerce application crafted in Flutter. Provides instant search with query debouncing, category filtering, wishlists with persistent local storage, product review system, and a checkout wizard.',
     descriptionAr: 'تطبيق تجارة إلكترونية متكامل على الهواتف الذكية مطور بـ Flutter. يقدم بحثاً سريعاً، وفلترة متقدمة حسب الفئات والماركات، وقائمة مفضلة مع حفظ محلي، ونظام تقييم المنتجات، مع مسار شراء ودفع سلس وسريع.',
@@ -93,6 +126,8 @@ export const PROJECTS: Project[] = [
     taglineAr: 'اختبار اختراق تطبيقات الويب · بيرب سويت · حقن SQL وهجمات XSS وIDOR',
     category: 'cyber',
     image: cyberLabImg,
+    imageSrcSet: projectImageSources.cyber.srcSet,
+    imagePlaceholder: projectImageSources.cyber.placeholder,
     tags: ['Burp Suite', 'OWASP Top 10', 'SQLi', 'XSS', 'IDOR', 'Security Report'],
     description: 'Comprehensive manual penetration testing engagement across 25+ vulnerabilities aligned with the OWASP Top 10 framework. Successfully exploited SQL Injections for administrative authentication bypass, stored and reflected XSS, broken access controls (IDOR), and insecure deserialization.',
     descriptionAr: 'اختبار اختراق يدوي متقدم وشامل شمل أكثر من 25 ثغرة أمنية مصنفة ضمن معايير OWASP Top 10. تضمن تجاوز المصادقة عبر SQLi، واكتشاف ثغرات XSS، وتجاوز صلاحيات الوصول IDOR، وتوثيق الحلول الأمنية البرمجية المضادة.',
@@ -118,6 +153,8 @@ export const PROJECTS: Project[] = [
     taglineAr: 'فلاتر ودارت · واجهات برمجية RESTful API · جدولة وتتبع الحجوزات',
     category: 'flutter',
     image: foodAppImg,
+    imageSrcSet: projectImageSources.food.srcSet,
+    imagePlaceholder: projectImageSources.food.placeholder,
     tags: ['Flutter', 'Dart', 'REST API', 'Backend Integration', 'Location Services', 'UI/UX'],
     description: 'An on-demand home care and laundry booking platform built in Flutter with dedicated RESTful API integration. Allows users to schedule cleaning and dry-cleaning appointments, select pickup timeframes, track service staff via map interfaces, and manage service invoices.',
     descriptionAr: 'منصة متطورة لحجز الخدمات المنزلية والمغاسل بنقرات معدودة مطورة بفلاتر ومربوطة مع واجهات Labetak API الخلفية. يتيح للمستخدمين اختيار نوع الخدمة، وجدولة المواعيد وتحديد أوقات الاستلام والتوصيل مع دعم الخرائط وتتبع حالة الطلبات.',
@@ -144,6 +181,8 @@ export const PROJECTS: Project[] = [
     taglineAr: 'نموذج عطر ثلاثي الأبعاد تفاعلي (3D) · استعراض تطبيق الموبايل · تحميل مباشر لـ APK ونموذج تواصل',
     category: 'web',
     image: hstoreImg,
+    imageSrcSet: projectImageSources.hstore.srcSet,
+    imagePlaceholder: projectImageSources.hstore.placeholder,
     tags: ['Web Development', '3D Perfume Model', 'JavaScript', 'HTML5/CSS3', 'APK Download', 'Contact Form'],
     description: 'A modern, high-craft web front-end platform for Hstore featuring an interactive rotating 3D perfume showcase model, detailed highlights of the companion Hstore Flutter mobile application, a direct APK download link, and a fully functional interactive contact form.',
     descriptionAr: 'واجهة ويب عصرية واحترافية لمتجر Hstore تتميز بنموذج عطر تفاعلي ثلاثي الأبعاد (3D Model) يدور مع حركة المستخدم، واستعراض شامل لمميزات تطبيق Hstore للهواتف الذكية، وزر مباشر لتحميل ملف الـ APK، بالإضافة إلى نموذج تواصل تفاعلي متكامل.',
@@ -170,6 +209,8 @@ export const PROJECTS: Project[] = [
     taglineAr: 'تطوير الويب · واجهة بنكية تفاعلية متجاوبة · لوحة تحكم مالية والتحويلات',
     category: 'web',
     image: foodAppImg,
+    imageSrcSet: projectImageSources.food.srcSet,
+    imagePlaceholder: projectImageSources.food.placeholder,
     tags: ['Web Development', 'JavaScript', 'HTML5/CSS3', 'Financial Dashboard', 'Transactions', 'Responsive UI'],
     description: 'A responsive web banking platform designed for modern financial services. Features real-time balance overviews, transaction history, fund transfer validation, virtual card controls, and banking security workflows with a sleek, user-friendly interface.',
     descriptionAr: 'منصة مصرفية تفاعلية حديثة للويب مصممة للخدمات المالية السريعة. تتميز بعرض لحظي للأرصدة وسجل الحركات المالية، والتحقق الآمن من الحوالات، وإدارة البطاقات الرقمية، مع تجربة مستخدم متجاوبة وسلسة.',
@@ -196,6 +237,8 @@ export const PROJECTS: Project[] = [
     taglineAr: 'بايثون وباش · جمع استخبارات المصادر المفتوحة · الفحص الشبكي المؤتمت',
     category: 'cyber',
     image: cyberLabImg,
+    imageSrcSet: projectImageSources.cyber.srcSet,
+    imagePlaceholder: projectImageSources.cyber.placeholder,
     tags: ['Python', 'Bash', 'Nmap Scripting', 'OSINT', 'Shodan API', 'Subfinder'],
     description: 'Custom security automation scripts and recon pipelines created for offensive engagements. Orchestrates tools like Subfinder, Nmap, and Shodan API to rapidly map target attack surfaces, uncover exposed services, and generate actionable reconnaissance summaries.',
     descriptionAr: 'مجموعة أدوات وبرمجيات أتمتة أمنية مخصصة لعمليات الفريق الأحمر والاستخبارات المفتوحة OSINT. تنسق العمل بين أدوات الفحص مثل Subfinder وNmap وShodan API لإنتاج مسح شامل لمساحة الهجوم للشبكات وتوثيق المنافذ المفتوحة.',
@@ -271,7 +314,6 @@ export const CERTIFICATES: Certificate[] = [
     certId: '9PEDOSS3Z08',
     category: 'cyber',
     type: 'certificate',
-    localPath: '/certificates/Haydar_Abdo_Cyber_Security_Certificate.pdf',
     driveUrl: GOOGLE_DRIVE_LINKS.certificates.cyber,
     externalUrl: GOOGLE_DRIVE_LINKS.certificates.cyber,
     summary: 'Successfully completed intensive task-based training in Cyber Security & Penetration Testing, finishing 1st out of 25 trainees. Valid Certificate ID: 9PEDOSS3Z08 signed by Alaa Darwish (Founder & CEO).',
@@ -286,7 +328,6 @@ export const CERTIFICATES: Certificate[] = [
     recommender: 'Alaa Darwish (Founder & CEO)',
     category: 'cyber',
     type: 'recommendation',
-    localPath: '/certificates/Haydar_Abdo_Cyber_Security_Recommendation.pdf',
     driveUrl: GOOGLE_DRIVE_LINKS.recommendations.cyber,
     externalUrl: GOOGLE_DRIVE_LINKS.recommendations.cyber,
     summary: '"Haydar is a motivated individual with a passion for Cyber Security. He demonstrated exceptional creativity, attention to detail, technical expertise, teamwork, and adaptability... I highly recommend him for employment."',
@@ -300,7 +341,6 @@ export const CERTIFICATES: Certificate[] = [
     date: 'Issued July 2024 / Completed Jan 2025',
     category: 'flutter',
     type: 'certificate',
-    localPath: '/certificates/Haydar_Abdo_Flutter_Lv2_Certificate.pdf',
     driveUrl: GOOGLE_DRIVE_LINKS.certificates.flutterLv2,
     externalUrl: GOOGLE_DRIVE_LINKS.certificates.flutterLv2,
     summary: 'Advanced certification in cross-platform mobile development with Flutter, covering Clean Architecture, complex state management, custom animations, and API consumption.',
@@ -315,7 +355,6 @@ export const CERTIFICATES: Certificate[] = [
     recommender: 'Alaa Darwish (Founder & CEO)',
     category: 'flutter',
     type: 'recommendation',
-    localPath: '/certificates/Haydar_Abdo_Flutter_Lv2_Recommendation.pdf',
     driveUrl: GOOGLE_DRIVE_LINKS.recommendations.flutterLv2,
     externalUrl: GOOGLE_DRIVE_LINKS.recommendations.flutterLv2,
     summary: '"He successfully completed a four-months training program in App Development | Flutter Lvl.2. Haydar is a motivated individual with a passion for Flutter... He has the skills and work ethic to thrive."',
@@ -330,7 +369,6 @@ export const CERTIFICATES: Certificate[] = [
     certId: '645xrjszj70',
     category: 'flutter',
     type: 'certificate',
-    localPath: '/certificates/Haydar_Abdo_Flutter_Lv1_Certificate.pdf',
     driveUrl: GOOGLE_DRIVE_LINKS.certificates.flutterLv1,
     externalUrl: GOOGLE_DRIVE_LINKS.certificates.flutterLv1,
     summary: 'Foundational mobile engineering certificate covering Dart OOP fundamentals, Widget tree lifecycles, UI composition, and local state management. Valid Certificate ID: 645xrjszj70.',
@@ -345,7 +383,6 @@ export const CERTIFICATES: Certificate[] = [
     recommender: 'Alaa Darwish (Founder & CEO)',
     category: 'flutter',
     type: 'recommendation',
-    localPath: '/certificates/Haydar_Abdo_Flutter_Lv1_Recommendation.pdf',
     driveUrl: GOOGLE_DRIVE_LINKS.recommendations.flutterLv1,
     externalUrl: GOOGLE_DRIVE_LINKS.recommendations.flutterLv1,
     summary: '"He successfully completed four-months training program in App Development | Flutter Lvl.1 from February 2024 to June 2024. Exceptional creativity and adaptability."',
@@ -360,7 +397,6 @@ export const CERTIFICATES: Certificate[] = [
     certId: '9PEDOSS3Z08',
     category: 'web',
     type: 'certificate',
-    localPath: '/certificates/Haydar_Abdo_Frontend_Lv1_Certificate.pdf',
     driveUrl: GOOGLE_DRIVE_LINKS.certificates.frontendLv1,
     externalUrl: GOOGLE_DRIVE_LINKS.certificates.frontendLv1,
     summary: 'Certification in modern front-end engineering, semantic HTML5, responsive CSS3/Bootstrap, and JavaScript web interactivity. Valid Certificate ID: 9PEDOSS3Z08.',
@@ -375,7 +411,6 @@ export const CERTIFICATES: Certificate[] = [
     recommender: 'Alaa Darwish (Founder & CEO)',
     category: 'web',
     type: 'recommendation',
-    localPath: '/certificates/Haydar_Abdo_Frontend_Lv1_Recommendation.pdf',
     driveUrl: GOOGLE_DRIVE_LINKS.recommendations.frontendLv1,
     externalUrl: GOOGLE_DRIVE_LINKS.recommendations.frontendLv1,
     summary: '"He demonstrated exceptional creativity, attention to detail, technical expertise, teamwork, and adaptability... He has the skills and work ethic to thrive in digital front-end."',
@@ -690,7 +725,7 @@ export const TRANSLATIONS = {
       badge: 'متاح للعمل عن بُعد وللفرص الوظيفية في المشاريع',
       academicHighlight: 'المرتبة الثالثة على الدفعة الأكاديمية · إجازة في هندسة حاسبات وتحكم آلي (2026)',
       pentestHighlight: 'المركز الأول من بين 25 متدرباً في برنامج الأمن السيبراني بأكاديمية Focal X',
-      name: 'حيدر ثائر عبدو',
+      name: 'المهندس حيدر ثائر عبدو',
       taglineAll: 'مهندس حاسبات وتحكم آلي · مطور تطبيقات هواتف (فلاتر) · مختبر اختراق أمن سيبراني',
       taglineFlutter: 'بناء وتطوير تطبيقات هواتف ذكية متقدمة وسريعة الاستجابة بتقنية Flutter و Dart',
       taglineCyber: 'مختبر اختراق أمني معتمد (فريق أحمر) وخبير في اكتشاف وترقيع الثغرات الأمنية',

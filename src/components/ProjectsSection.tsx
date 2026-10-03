@@ -4,6 +4,7 @@ import { Language, Project, Track } from '../types/portfolio';
 import { PROJECTS, TRANSLATIONS } from '../data/translations';
 import { ExternalLink, Github, Eye, Terminal, Smartphone, Globe, X, Check } from 'lucide-react';
 import { fadeUp, stagger, viewportOnce, EASE_OUT } from '../lib/motion';
+import { useDialogAccessibility } from '../lib/useDialogAccessibility';
 
 interface ProjectsSectionProps {
   lang: Language;
@@ -12,8 +13,20 @@ interface ProjectsSectionProps {
 
 type ProjectFilter = 'all' | 'flutter' | 'cyber' | 'web';
 
-const ProjectImage: React.FC<{ src: string; alt: string; className?: string }> = ({
+const ProjectImage: React.FC<{
+  src: string;
+  srcSet?: string;
+  placeholderSrc?: string;
+  sizes?: string;
+  loading?: 'eager' | 'lazy';
+  alt: string;
+  className?: string;
+}> = ({
   src,
+  srcSet,
+  placeholderSrc,
+  sizes = '(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw',
+  loading = 'lazy',
   alt,
   className = '',
 }) => {
@@ -28,13 +41,15 @@ const ProjectImage: React.FC<{ src: string; alt: string; className?: string }> =
           className={`absolute inset-0 scale-110 bg-cover bg-center blur-xl transition-opacity duration-700 ${
             isLoaded ? 'opacity-0' : 'opacity-100'
           }`}
-          style={{ backgroundImage: `url("${src}")` }}
+          style={placeholderSrc ? { backgroundImage: `url("${placeholderSrc}")` } : undefined}
         />
       )}
       <img
         src={src}
+        srcSet={srcSet}
+        sizes={sizes}
         alt={alt}
-        loading="lazy"
+        loading={loading}
         decoding="async"
         referrerPolicy="no-referrer"
         onLoad={() => setIsLoaded(true)}
@@ -56,6 +71,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, activeTr
   );
 
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const projectDialogRef = useDialogAccessibility(!!selectedProject, () => setSelectedProject(null));
 
   // Sync with main page activeTrack
   React.useEffect(() => {
@@ -70,8 +86,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, activeTr
 
   const filters: { key: ProjectFilter; label: string; active: string }[] = [
     { key: 'all', label: t.filterAll, active: 'bg-slate-900 dark:bg-slate-800' },
-    { key: 'flutter', label: t.filterFlutter, active: 'bg-emerald-600' },
-    { key: 'cyber', label: t.filterCyber, active: 'bg-cyan-600' },
+    { key: 'flutter', label: t.filterFlutter, active: 'bg-emerald-700' },
+    { key: 'cyber', label: t.filterCyber, active: 'bg-cyan-700' },
     { key: 'web', label: t.filterWeb, active: 'bg-indigo-600' },
   ];
 
@@ -98,7 +114,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, activeTr
           viewport={viewportOnce}
         >
           <div className="max-w-2xl">
-            <motion.p variants={fadeUp} className="text-xs font-semibold tracking-wider text-emerald-600 uppercase dark:text-emerald-400">
+            <motion.p variants={fadeUp} className="text-xs font-semibold tracking-wider text-emerald-700 uppercase dark:text-emerald-300">
               {lang === 'ar' ? 'معرض الأعمال والإنجازات' : 'Selected Engagements & Work'}
             </motion.p>
             <motion.h2 variants={fadeUp} className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -120,6 +136,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, activeTr
                 <button
                   key={f.key}
                   onClick={() => setActiveFilter(f.key)}
+                  aria-pressed={isActive}
                   className={`relative rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
                     isActive
                       ? 'text-white'
@@ -161,7 +178,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, activeTr
                     <ProjectImage
                       key={project.image}
                       src={project.image}
-                      alt={project.title}
+                      srcSet={project.imageSrcSet}
+                      placeholderSrc={project.imagePlaceholder}
+                      alt={isRtl ? `صورة توضيحية لمشروع ${project.titleAr}` : `${project.title} project preview`}
                       className="h-full w-full object-cover object-center group-hover:scale-105"
                     />
                     {/* Subtle Scrim */}
@@ -221,7 +240,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, activeTr
                         href={project.liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600 hover:text-emerald-500 dark:text-emerald-400 transition-colors"
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 hover:text-emerald-800 dark:text-emerald-300 dark:hover:text-emerald-200 transition-colors"
                         title={t.liveDemo}
                       >
                         <span>{t.liveDemo}</span>
@@ -262,6 +281,11 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, activeTr
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
+              role="dialog"
+              ref={projectDialogRef}
+              aria-modal="true"
+              aria-labelledby="project-dialog-title"
+              tabIndex={-1}
               className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-slate-800 dark:bg-slate-900"
               initial={{ opacity: 0, scale: 0.94, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0, transition: { type: 'spring', stiffness: 320, damping: 28 } }}
@@ -274,7 +298,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, activeTr
                 whileTap={{ scale: 0.9 }}
                 transition={{ duration: 0.2 }}
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 z-10 rounded-lg bg-white/70 p-1.5 text-slate-400 backdrop-blur-xs hover:bg-slate-100 hover:text-slate-600 dark:bg-slate-900/70 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+                className="absolute top-4 right-4 z-10 rounded-lg bg-white/70 p-1.5 text-slate-600 backdrop-blur-xs hover:bg-slate-100 hover:text-slate-900 dark:bg-slate-900/70 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
                 aria-label={t.closeModal}
               >
                 <X className="h-5 w-5" />
@@ -285,19 +309,23 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, activeTr
                 <ProjectImage
                   key={selectedProject.image}
                   src={selectedProject.image}
-                  alt={selectedProject.title}
+                  srcSet={selectedProject.imageSrcSet}
+                  placeholderSrc={selectedProject.imagePlaceholder}
+                  sizes="90vw"
+                  loading="eager"
+                  alt={isRtl ? `صورة توضيحية لمشروع ${selectedProject.titleAr}` : `${selectedProject.title} project preview`}
                   className="h-full w-full object-cover object-center"
                 />
               </div>
 
               {/* Title & Tagline */}
               <div className="mt-4">
-                <div className="flex items-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
                   <span className="capitalize">{selectedProject.category} Track</span>
                   <span aria-hidden="true">·</span>
                   <span>Production Implementation</span>
                 </div>
-                <h3 className="mt-1 text-xl font-bold text-slate-900 dark:text-white">
+                <h3 id="project-dialog-title" className="mt-1 text-xl font-bold text-slate-900 dark:text-white">
                   {isRtl ? selectedProject.titleAr : selectedProject.title}
                 </h3>
                 <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
@@ -356,7 +384,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, activeTr
                     href={selectedProject.liveUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-500 shadow-xs transition-colors"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-700 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-800 shadow-xs transition-colors"
                   >
                     <ExternalLink className="h-4 w-4" />
                     <span>{t.liveDemo}</span>

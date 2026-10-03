@@ -28,6 +28,11 @@
     max-width: 100%;
     overflow-x: clip;
   }
+
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 3px solid #047857 !important;
+    outline-offset: 3px;
+  }
 }
 
 /* Custom terminal and scrollbar styling */
