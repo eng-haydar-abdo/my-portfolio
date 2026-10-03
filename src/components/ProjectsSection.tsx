@@ -12,6 +12,41 @@ interface ProjectsSectionProps {
 
 type ProjectFilter = 'all' | 'flutter' | 'cyber' | 'web';
 
+const ProjectImage: React.FC<{ src: string; alt: string; className?: string }> = ({
+  src,
+  alt,
+  className = '',
+}) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  return (
+    <div className="relative h-full w-full overflow-hidden bg-gradient-to-br from-slate-200 via-slate-100 to-emerald-100 dark:from-slate-800 dark:via-slate-900 dark:to-emerald-950">
+      {!hasError && (
+        <div
+          aria-hidden="true"
+          className={`absolute inset-0 scale-110 bg-cover bg-center blur-xl transition-opacity duration-700 ${
+            isLoaded ? 'opacity-0' : 'opacity-100'
+          }`}
+          style={{ backgroundImage: `url("${src}")` }}
+        />
+      )}
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        referrerPolicy="no-referrer"
+        onLoad={() => setIsLoaded(true)}
+        onError={() => setHasError(true)}
+        className={`${className} transition-[filter,opacity,transform] duration-700 ${
+          isLoaded ? 'scale-100 blur-0 opacity-100' : 'scale-105 blur-md opacity-0'
+        }`}
+      />
+    </div>
+  );
+};
+
 export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, activeTrack }) => {
   const t = TRANSLATIONS[lang].projects;
   const isRtl = lang === 'ar';
@@ -123,11 +158,11 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, activeTr
                 <div>
                   {/* Media Container */}
                   <div className="relative aspect-16/9 overflow-hidden bg-slate-100 dark:bg-slate-950">
-                    <img
+                    <ProjectImage
+                      key={project.image}
                       src={project.image}
                       alt={project.title}
-                      referrerPolicy="no-referrer"
-                      className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                      className="h-full w-full object-cover object-center group-hover:scale-105"
                     />
                     {/* Subtle Scrim */}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
@@ -247,10 +282,10 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang, activeTr
 
               {/* Modal Image */}
               <div className="aspect-16/9 overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-950">
-                <img
+                <ProjectImage
+                  key={selectedProject.image}
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  referrerPolicy="no-referrer"
                   className="h-full w-full object-cover object-center"
                 />
               </div>

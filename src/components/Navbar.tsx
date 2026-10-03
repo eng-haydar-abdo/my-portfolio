@@ -60,6 +60,22 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const toggleLang = () => setLang(lang === 'en' ? 'ar' : 'en');
 
+  const handleMobileNavClick = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault();
+    setMobileMenuOpen(false);
+    window.history.pushState(null, '', href);
+
+    // Wait for the drawer's exit animation so the sticky header has its final height.
+    window.setTimeout(() => {
+      const target = document.getElementById(href.slice(1));
+      if (!target) return;
+
+      const headerHeight = document.querySelector('header')?.getBoundingClientRect().height ?? 0;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - 8;
+      window.scrollTo({ top: targetTop, behavior: 'smooth' });
+    }, 220);
+  };
+
   return (
     <motion.header
       className="sticky top-0 z-50 w-full border-b backdrop-blur-md transition-colors duration-200 border-slate-200/80 bg-white/95 dark:border-slate-800/80 dark:bg-slate-950/95"
@@ -158,6 +174,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden inline-flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-100 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-800 shrink-0 cursor-pointer"
             aria-label="Open mobile menu"
+            aria-expanded={mobileMenuOpen}
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
@@ -190,7 +207,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <motion.a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(event) => handleMobileNavClick(event, link.href)}
                   initial={{ opacity: 0, x: 16 * (isRtl ? -1 : 1) }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, ease: EASE_OUT, delay: 0.05 + i * 0.04 }}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Certificate, Language } from '../types/portfolio';
 import { CERTIFICATES, TRANSLATIONS } from '../data/translations';
-import { Award, FileText, ExternalLink, X, QrCode, ShieldCheck, Download } from 'lucide-react';
+import { Award, FileText, ExternalLink, X, QrCode, ShieldCheck } from 'lucide-react';
 import { fadeUp, stagger, viewportOnce, EASE_OUT } from '../lib/motion';
 
 interface CertificatesSectionProps {
@@ -17,31 +17,6 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
 
   const [filter, setFilter] = useState<Filter>('all');
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
-
-  const handleDownloadClick = async (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    filePath: string,
-    fileName: string
-  ) => {
-    try {
-      const response = await fetch(filePath);
-      if (!response.ok) return;
-      const blob = await response.blob();
-      if (blob.type.includes('pdf') || blob.size > 10000) {
-        e.preventDefault();
-        const blobUrl = window.URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
-        const tempLink = document.createElement('a');
-        tempLink.href = blobUrl;
-        tempLink.download = fileName;
-        document.body.appendChild(tempLink);
-        tempLink.click();
-        document.body.removeChild(tempLink);
-        setTimeout(() => window.URL.revokeObjectURL(blobUrl), 2000);
-      }
-    } catch {
-      // Fallback to normal anchor click
-    }
-  };
 
   const filteredCerts = CERTIFICATES.filter((item) => {
     if (filter === 'all') return true;
@@ -263,26 +238,6 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
 
               {/* Modal Actions */}
               <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
-                {selectedCert.localPath && (
-                  <a
-                    href={selectedCert.localPath}
-                    download={selectedCert.localPath.split('/').pop() || 'certificate.pdf'}
-                    onClick={(e) =>
-                      selectedCert.localPath &&
-                      handleDownloadClick(
-                        e,
-                        selectedCert.localPath,
-                        selectedCert.localPath.split('/').pop() || 'certificate.pdf'
-                      )
-                    }
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-500 shadow-xs transition-colors cursor-pointer"
-                    title={isRtl ? 'تحميل المستند مباشرة (PDF)' : 'Direct download document PDF'}
-                  >
-                    <Download className="h-3.5 w-3.5" />
-                    <span>{isRtl ? 'تحميل مباشر (PDF)' : 'Download PDF'}</span>
-                  </a>
-                )}
-
                 {selectedCert.driveUrl && selectedCert.driveUrl.trim().startsWith('http') && (
                   <a
                     href={selectedCert.driveUrl.trim()}

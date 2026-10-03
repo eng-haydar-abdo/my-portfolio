@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Language, Track } from '../types/portfolio';
 import { TRANSLATIONS, PORTRAIT_IMAGE, GOOGLE_DRIVE_LINKS } from '../data/translations';
+import portraitPlaceholder from '../assets/images/haydar_profile_placeholder.jpg';
 import { Terminal, ArrowDownRight, Award, ShieldCheck, Smartphone, GraduationCap, ExternalLink } from 'lucide-react';
 import { fadeUp, popIn, stagger, EASE_OUT } from '../lib/motion';
 
@@ -14,6 +15,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, activeTrack }) => {
   const t = TRANSLATIONS[lang].hero;
   const isRtl = lang === 'ar';
   const portraitX = isRtl ? -48 : 48;
+  const [portraitLoaded, setPortraitLoaded] = React.useState(false);
 
   const getDynamicTagline = () => {
     if (activeTrack === 'flutter') return t.taglineFlutter;
@@ -234,10 +236,24 @@ export const Hero: React.FC<HeroProps> = ({ lang, activeTrack }) => {
               <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-xl dark:border-slate-800 dark:bg-slate-900/90">
                 <div className="relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-xl bg-slate-900">
                   <img
+                    src={portraitPlaceholder}
+                    alt=""
+                    aria-hidden="true"
+                    className={`absolute inset-0 h-full w-full scale-110 object-cover object-top blur-xl transition-opacity duration-700 ${
+                      portraitLoaded ? 'opacity-0' : 'opacity-100'
+                    }`}
+                  />
+                  <img
                     src={PORTRAIT_IMAGE}
                     alt="Eng Haydar Abdo"
                     referrerPolicy="no-referrer"
-                    className="h-full w-full object-cover object-top transition-transform duration-500 hover:scale-102"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    onLoad={() => setPortraitLoaded(true)}
+                    className={`relative h-full w-full object-cover object-top transition-[filter,opacity,transform] duration-700 hover:scale-102 ${
+                      portraitLoaded ? 'scale-100 blur-0 opacity-100' : 'scale-105 blur-md opacity-0'
+                    }`}
                   />
                   {/* Subtle lighting overlay gradient */}
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
