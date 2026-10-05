@@ -75,19 +75,21 @@ export const PROJECTS: Project[] = [
     imageSrcSet: projectImageSources.cyber.srcSet,
     imagePlaceholder: projectImageSources.cyber.placeholder,
     tags: ['Kali Linux', 'Metasploit', 'Nmap', 'Privilege Escalation', 'OWASP', 'ProFTPD'],
-    description: 'A rigorous Red Team engagement against the CyberX hardened lab (Ubuntu 16.04 LTS). Performed deep network enumeration, identified a ProFTPD 1.3.3c backdoor vulnerability, achieved initial access via Metasploit, performed WordPress-to-www-data lateral movement, and analyzed insecure file permissions to obtain full Root access.',
-    descriptionAr: 'عملية تدقيق واختبار اختراق هجومي متقدمة لبيئة مختبر CyberX المبنية على Ubuntu 16.04 LTS. تم خلالها إجراء فحص شبكي دقيق، واكتشاف ثغرة الباب الخلفي في ProFTPD 1.3.3c، والحصول على جلسة Metasploit ثم الوصول لبيانات WordPress وتصعيد الصلاحيات لصلاحيات Root الكاملة مع توثيق تقرير الاختراق.',
+    description: 'A hands-on penetration-testing engagement in the isolated CyberX Ubuntu 16.04 LTS lab. Enumerated more than five services—including ProFTPD 1.3.3c, OpenSSH 7.2p2, Apache 2.4.18, WordPress 4.9, and MySQL—and identified local system users. In the lab, used Metasploit to validate the ProFTPD 1.3.3c backdoor and obtain a root session. Separately practiced a WordPress-to-www-data foothold, local enumeration, and privilege-escalation analysis. Reviewed exposed service versions and insecure file permissions against known vulnerability information, documented attack paths and evidence, and studied wordlist concepts and Kali Linux wordlists.',
+    descriptionAr: 'اختبار اختراق عملي ضمن مختبر CyberX معزول يعمل بنظام Ubuntu 16.04 LTS. شمل حصر أكثر من خمس خدمات، منها ProFTPD 1.3.3c وOpenSSH 7.2p2 وApache 2.4.18 وWordPress 4.9 وMySQL، والتعرّف على حسابات المستخدمين المحليين. داخل المختبر، استُخدم Metasploit للتحقق من ثغرة الباب الخلفي في ProFTPD 1.3.3c والحصول على جلسة بصلاحيات Root. كما جرى التدريب بصورة منفصلة على الوصول إلى www-data عبر WordPress، ثم حصر النظام وتحليل مسارات تصعيد الصلاحيات. شمل العمل مراجعة إصدارات الخدمات وأذونات الملفات غير الآمنة وربط النتائج بمعلومات الثغرات المعروفة، وتوثيق مسارات الهجوم والأدلة، ودراسة نظرية قوائم الكلمات وقوائم Kali Linux المدمجة.',
     highlights: [
-      'Full kill-chain execution: Reconnaissance, Enumeration, Exploitation & Root Escalation',
-      'Exploitation of backdoor ProFTPD 1.3.3c and web vulnerability auditing',
-      'Privilege escalation analysis with sudo privileges and insecure cron evaluation',
-      'Comprehensive vulnerability assessment and executive remediation report'
+      'Enumerated 5+ services: ProFTPD 1.3.3c, OpenSSH 7.2p2, Apache 2.4.18, WordPress 4.9, and MySQL; identified local system users',
+      'In the isolated lab, used Metasploit to exploit and validate the ProFTPD 1.3.3c backdoor, obtaining a Root session',
+      'Practiced a separate WordPress-to-www-data foothold, followed by local enumeration and privilege-escalation analysis',
+      'Correlated service versions and insecure file permissions with known vulnerability information; documented attack paths and evidence',
+      'Studied wordlist concepts and practical use, including Kali Linux built-in wordlists'
     ],
     highlightsAr: [
-      'تنفيذ كامل لسلسلة الهجوم: جمع المعلومات، الفحص، الاستغلال، والوصول إلى Root',
-      'استغلال ثغرة الباب الخلفي ProFTPD 1.3.3c وتدقيق أمني لخدمات الويب',
-      'تحليل وتصعيد الصلاحيات الداخلية وفحص أذونات الملفات غير الآمنة',
-      'كتابة تقرير تدقيق أمني احترافي يشمل الثغرات وخطوات الترقيع والحماية'
+      'حصر أكثر من خمس خدمات: ProFTPD 1.3.3c وOpenSSH 7.2p2 وApache 2.4.18 وWordPress 4.9 وMySQL، والتعرّف على المستخدمين المحليين',
+      'استخدام Metasploit داخل المختبر المعزول للتحقق من ثغرة الباب الخلفي في ProFTPD 1.3.3c والحصول على جلسة Root',
+      'التدرب بصورة منفصلة على الوصول إلى www-data عبر WordPress، ثم حصر النظام وتحليل تصعيد الصلاحيات',
+      'ربط إصدارات الخدمات وأذونات الملفات غير الآمنة بمعلومات الثغرات المعروفة وتوثيق مسارات الهجوم والأدلة',
+      'دراسة نظرية قوائم الكلمات واستخدامها، بما في ذلك القوائم المدمجة في Kali Linux'
     ],
     demoType: 'terminal'
   },
@@ -101,17 +103,19 @@ export const PROJECTS: Project[] = [
     image: hstoreImg,
     imageSrcSet: projectImageSources.hstore.srcSet,
     imagePlaceholder: projectImageSources.hstore.placeholder,
-    tags: ['Flutter', 'Dart', 'Provider', 'SQLite/Hive', 'REST API', 'E-Commerce'],
-    description: 'A multi-vendor style mobile e-commerce application crafted in Flutter. Provides instant search with query debouncing, category filtering, wishlists with persistent local storage, product review system, and a checkout wizard.',
-    descriptionAr: 'تطبيق تجارة إلكترونية متكامل على الهواتف الذكية مطور بـ Flutter. يقدم بحثاً سريعاً، وفلترة متقدمة حسب الفئات والماركات، وقائمة مفضلة مع حفظ محلي، ونظام تقييم المنتجات، مع مسار شراء ودفع سلس وسريع.',
+    tags: ['Flutter', 'Dart', 'GetX', 'shared_preferences', 'REST API', 'E-Commerce'],
+    description: 'A multi-vendor style mobile e-commerce application built with Flutter. Uses GetX for state management and shared_preferences for lightweight local persistence. Features include responsive product search, category and brand filters, wishlists, product reviews, and a guided checkout flow.',
+    descriptionAr: 'تطبيق تجارة إلكترونية متعدد البائعين مطوّر باستخدام Flutter. يستخدم GetX لإدارة الحالة وshared_preferences لحفظ التفضيلات محلياً، ويضم البحث عن المنتجات وفلترتها حسب الفئات والماركات، وقائمة المفضلة، وتقييم المنتجات، ومساراً منظماً لإتمام الشراء.',
     highlights: [
-      'Persistent local caching for offline cart and favorite items using Hive',
+      'GetX controllers and reactive state management across the shopping experience',
+      'Lightweight local preference persistence using shared_preferences',
       'Dynamic product filters with price range, brand selection, and rating filters',
       'Optimized image caching and lazy-loaded infinite catalog scroll',
       'Validated multi-step checkout workflow with shipping and payment methods'
     ],
     highlightsAr: [
-      'تخزين محلي فعال لحفظ محتويات السلة والمفضلة بدون اتصال بالإنترنت',
+      'إدارة الحالة وتدفق التسوق باستخدام متحكمات GetX والتحديث التفاعلي',
+      'حفظ التفضيلات محلياً باستخدام shared_preferences',
       'فلاتر منتجات حيوية حسب الأسعار والماركات والتقييمات',
       'تحسين سرعة تحميل الصور والتصفح اللانهائي السلس للمنتجات',
       'مسار دفع متعدد الخطوات مع التحقق الدقيق من عناوين الشحن وطرق الدفع'
@@ -475,13 +479,13 @@ export const EXPERIENCES: ExperienceItem[] = [
     achievements: [
       'Graduated ranked 3rd in the entire academic cohort with high distinction.',
       'Comprehensive study of systems programming, computer networks, object-oriented programming (OOP), data structures & algorithms, and automated control systems.',
-      'Robotics & AI graduation project utilizing computer vision, convolutional neural networks (CNNs), and Python data-science libraries.',
+      'Graduation project focused on developing Hstore as an e-commerce mobile application and website.',
       'Deep foundation in low-level operating system architectures, fuzzy logic, state machines, and real-time computing systems.'
     ],
     achievementsAr: [
       'التخرج بالمرتبة الثالثة على مستوى الدفعة الأكاديمية بتفوق مع مرتبة شرف.',
       'دراسة متعمقة في هندسة البرمجيات، شبكات الحاسوب، البرمجة كائنية التوجه، الخوارزميات، ونظم التحكم الآلي والروبوتات.',
-      'مشروع تخرج تطبيقي في الروبوتات والذكاء الاصطناعي معتمداً على الرؤية الحاسوبية وشبكات التعلم العميق CNNs.',
+      'تناول مشروع التخرج تطوير Hstore كتطبيق للهواتف وموقع إلكتروني للتجارة الإلكترونية.',
       'أساس متين في بنية أنظمة التشغيل، والمنطق الضبابي Fuzzy Logic، والأنظمة المدمجة الآنية.'
     ]
   }
@@ -497,7 +501,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: 'Flutter SDK (Lvl.1 & Lvl.2 Certified)', level: 'Advanced', levelAr: 'متقدم', featured: true },
       { name: 'Dart Programming Language', level: 'Advanced', levelAr: 'متقدم', featured: true },
       { name: 'State Management: GetX & Provider', level: 'Advanced', levelAr: 'متقدم', featured: true },
-      { name: 'Clean Architecture & BLoC Principles', level: 'Proficient', levelAr: 'متقن', featured: true },
+      { name: 'Clean Architecture', level: 'Proficient', levelAr: 'متقن', featured: true },
       { name: 'REST APIs & JSON Parsing', level: 'Advanced', levelAr: 'متقدم', featured: true },
       { name: 'Firebase (Auth, Firestore, Cloud)', level: 'Proficient', levelAr: 'متقن' },
       { name: 'Local Databases: SQLite, Hive, SharedPreferences', level: 'Proficient', levelAr: 'متقن' },
