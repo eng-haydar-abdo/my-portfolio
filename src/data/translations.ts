@@ -268,43 +268,45 @@ export const CV_DOWNLOAD_FILES = {
     title: 'Haydar Abdo - Flutter CV',
     localPath: '/Haydar_Abdo_Flutter_CV.pdf',
     fileName: 'Haydar_Abdo_Flutter_CV.pdf',
-    driveUrl: 'https://drive.google.com/file/d/1wVuNE3YXcVfYDiq2fIfvk8W5zoBhSjMc/view',
-    directDownloadUrl: 'https://drive.google.com/uc?export=download&id=1wVuNE3YXcVfYDiq2fIfvk8W5zoBhSjMc',
+    driveUrl: 'https://drive.google.com/file/d/1K_zriUb5nSuTANdK0d21IwmWM5Vp9vSW/view?usp=sharing',
+    directDownloadUrl: 'https://drive.google.com/uc?export=download&id=1K_zriUb5nSuTANdK0d21IwmWM5Vp9vSW',
   },
   cyber: {
     title: 'Haydar Abdo - Cyber Security CV',
     localPath: '/Haydar_Abdo_Cyber_Security_CV.pdf',
     fileName: 'Haydar_Abdo_Cyber_Security_CV.pdf',
-    driveUrl: 'https://drive.google.com/file/d/1JxC5XCAExtxOziA2wysa8wLZkvwl7p3P/view',
-    directDownloadUrl: 'https://drive.google.com/uc?export=download&id=1JxC5XCAExtxOziA2wysa8wLZkvwl7p3P',
+    driveUrl: 'https://drive.google.com/file/d/1cEyulRjX_7U3zd0jTT2XPk7C5aAl0y2A/view?usp=sharing',
+    directDownloadUrl: 'https://drive.google.com/uc?export=download&id=1cEyulRjX_7U3zd0jTT2XPk7C5aAl0y2A',
   },
   ai: {
     title: 'Haydar Abdo - AI & Machine Learning CV',
     localPath: '/Haydar_Abdo_AI_CV.pdf',
     fileName: 'Haydar_Abdo_AI_CV.pdf',
-    driveUrl: 'https://drive.google.com/file/d/1dzEZB6oh4cyDB3MXWQHwuz501vaYUYee/view',
-    directDownloadUrl: 'https://drive.google.com/uc?export=download&id=1dzEZB6oh4cyDB3MXWQHwuz501vaYUYee',
+    driveUrl: 'https://drive.google.com/file/d/1_jph7G_3N0U7i877PLj0W1q2qjKgYh8g/view?usp=sharing',
+    directDownloadUrl: 'https://drive.google.com/uc?export=download&id=1_jph7G_3N0U7i877PLj0W1q2qjKgYh8g',
   },
 };
 
 // Centralized Google Drive Links for CVs and Certificates
 export const GOOGLE_DRIVE_LINKS = {
   cv: {
-    ai: 'https://drive.google.com/file/d/1dzEZB6oh4cyDB3MXWQHwuz501vaYUYee/view',
-    flutter: 'https://drive.google.com/file/d/1wVuNE3YXcVfYDiq2fIfvk8W5zoBhSjMc/view',
-    cyber: 'https://drive.google.com/file/d/1JxC5XCAExtxOziA2wysa8wLZkvwl7p3P/view',
+    general: 'https://drive.google.com/file/d/1QKy5rgLAJws4Q1u1l7pYLQ9iwC6vr83E/view?usp=sharing',
+    flutter: 'https://drive.google.com/file/d/1K_zriUb5nSuTANdK0d21IwmWM5Vp9vSW/view?usp=sharing',
+    cyber: 'https://drive.google.com/file/d/1cEyulRjX_7U3zd0jTT2XPk7C5aAl0y2A/view?usp=sharing',
+    ai: 'https://drive.google.com/file/d/1_jph7G_3N0U7i877PLj0W1q2qjKgYh8g/view?usp=sharing',
+    frontend: 'https://drive.google.com/file/d/1Rdjhf4pQcwdz7Hcm-7xtJ2XNTH5juHO_/view?usp=sharing',
   },
   certificates: {
-    cyber: 'https://drive.google.com/file/d/1fENpJbN6y9-yIoLzABGWw-eLI56HklTE/view',
-    flutterLv1: 'https://drive.google.com/file/d/1YXiI3zVfNHdePN49jQViLzlv0-IcFzlD/view',
-    flutterLv2: 'https://drive.google.com/file/d/17X668G-h8cA5ikKTtgAAAywDq8vwPg9n/view',
-    frontendLv1: 'https://drive.google.com/file/d/1rN0FpgYCV1GqkBXevhgZqgLu_XIeBszx/view',
+    cyber: 'https://drive.google.com/file/d/1NXVZnHcbEftbYe9zo1FJRsFznsBw_xy2/view?usp=sharing',
+    flutterLv1: 'https://drive.google.com/file/d/1H1qctS8t__xLnUwBITYP4YRsK66v-L4i/view?usp=sharing',
+    flutterLv2: 'https://drive.google.com/file/d/1H5ZzhkFHBPd84sgj6GvhO00Yy5MWdZWu/view?usp=sharing',
+    frontendLv1: 'https://drive.google.com/file/d/1UvOyqAqu_K9OCvLVsUTP5xIMCuH08Uk5/view?usp=sharing',
   },
   recommendations: {
-    cyber: 'https://drive.google.com/file/d/1bopP7kAybdH7eVQD94KOP6A1b0_kYSr8/view',
-    flutterLv1: 'https://drive.google.com/file/d/1I3HebnNtyygyslQkKy3aNaVbamtDlWk4/view',
-    flutterLv2: 'https://drive.google.com/file/d/1elUBuozcbADZSNZsx0nKbH6-F9xBkSpN/view',
-    frontendLv1: 'https://drive.google.com/file/d/1P6cqoAawJDThZiYKDQJToyPgZgxkydsG/view',
+    cyber: 'https://drive.google.com/file/d/1oocA5D3wnTh8_nnr7c2L9VHUYZT4dDNn/view?usp=sharing',
+    flutterLv1: 'https://drive.google.com/file/d/1g00adsMgYUwO3OfGi8KL38-mlaKt3u3A/view?usp=sharing',
+    flutterLv2: 'https://drive.google.com/file/d/1BO_ixCnPF09ilzTKlPUxNfy2X5lYbDhM/view?usp=sharing',
+    frontendLv1: 'https://drive.google.com/file/d/1tgYKantUDTz-gb7zfv7SEqABeBENQYo6/view?usp=sharing',
   },
 };
 
@@ -575,6 +577,8 @@ export const TRANSLATIONS = {
       downloadFlutterCv: 'Preview Flutter CV (PDF)',
       downloadCyberCv: 'Preview Penetration Tester CV (PDF)',
       downloadAiCv: 'Preview AI / ML CV (PDF)',
+      downloadGeneralCv: 'Preview Comprehensive CV (PDF)',
+      downloadFrontendCv: 'Preview Front-end CV (PDF)',
       exploreProjects: 'Explore Projects',
       launchTerminal: 'Launch Terminal',
       contactMe: 'Get In Touch'
@@ -737,6 +741,8 @@ export const TRANSLATIONS = {
       downloadFlutterCv: 'معاينة سيرة فلاتر (PDF)',
       downloadCyberCv: 'معاينة سيرة الأمن السيبراني (PDF)',
       downloadAiCv: 'معاينة سيرة الذكاء الاصطناعي (PDF)',
+      downloadGeneralCv: 'معاينة السيرة الشاملة (PDF)',
+      downloadFrontendCv: 'معاينة سيرة الواجهات الأمامية (PDF)',
       exploreProjects: 'تصفح المشاريع',
       launchTerminal: 'تشغيل الطرفية',
       contactMe: 'تواصل معي مباشرة'

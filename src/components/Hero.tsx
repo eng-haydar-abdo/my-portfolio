@@ -168,6 +168,38 @@ export const Hero: React.FC<HeroProps> = ({ lang, activeTrack }) => {
                 <span>{t.downloadAiCv || (isRtl ? 'معاينة سيرة الذكاء الاصطناعي (PDF)' : 'Preview AI / ML CV (PDF)')}</span>
                 <ExternalLink className="h-3.5 w-3.5 opacity-70 shrink-0" />
               </motion.a>
+
+              {/* Comprehensive CV Button */}
+              <motion.a
+                variants={fadeUp}
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.97 }}
+                href={GOOGLE_DRIVE_LINKS.cv.general}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-slate-800 shadow-xs transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800 cursor-pointer"
+                title={isRtl ? 'معاينة السيرة الشاملة في Google Drive' : 'Preview Comprehensive CV in Google Drive'}
+              >
+                <GraduationCap className="h-4 w-4 text-amber-500 shrink-0" />
+                <span>{t.downloadGeneralCv}</span>
+                <ExternalLink className="h-3.5 w-3.5 opacity-70 shrink-0" />
+              </motion.a>
+
+              {/* Front-end CV Button */}
+              <motion.a
+                variants={fadeUp}
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.97 }}
+                href={GOOGLE_DRIVE_LINKS.cv.frontend}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-slate-800 shadow-xs transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800 cursor-pointer"
+                title={isRtl ? 'معاينة سيرة الواجهات الأمامية في Google Drive' : 'Preview Front-end CV in Google Drive'}
+              >
+                <ExternalLink className="h-4 w-4 text-cyan-600 shrink-0" />
+                <span>{t.downloadFrontendCv}</span>
+                <ExternalLink className="h-3.5 w-3.5 opacity-70 shrink-0" />
+              </motion.a>
             </motion.div>
 
             {/* Quick Links Pills */}
