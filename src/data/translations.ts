@@ -480,12 +480,14 @@ export const EXPERIENCES: ExperienceItem[] = [
     type: 'education',
     achievements: [
       'Graduated ranked 4th in the entire academic cohort with high distinction.',
+      'Cumulative university GPA: 81.23%.',
       'Comprehensive study of systems programming, computer networks, object-oriented programming (OOP), data structures & algorithms, and automated control systems.',
       'Graduation project focused on developing Hstore as an e-commerce mobile application and website.',
       'Deep foundation in low-level operating system architectures, fuzzy logic, state machines, and real-time computing systems.'
     ],
     achievementsAr: [
       'التخرج بالمرتبة الرابعة على مستوى الدفعة الأكاديمية بتفوق مع مرتبة شرف.',
+      'المعدل التراكمي الجامعي: 81.23٪.',
       'دراسة متعمقة في هندسة البرمجيات، شبكات الحاسوب، البرمجة كائنية التوجه، الخوارزميات، ونظم التحكم الآلي والروبوتات.',
       'تناول مشروع التخرج تطوير Hstore كتطبيق للهواتف وموقع إلكتروني للتجارة الإلكترونية.',
       'أساس متين في بنية أنظمة التشغيل، والمنطق الضبابي Fuzzy Logic، والأنظمة المدمجة الآنية.'

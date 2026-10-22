@@ -88,6 +88,7 @@ Computer Engineering & Automatic Control graduate (Latakia University, ranked 4t
 EDUCATION:
 Latakia University – B.Sc. in Computer Engineering & Automatic Control (2026)
 Academic Standing: Ranked 4th in the academic cohort.
+Cumulative GPA: 81.23%.
 
 KEY PROJECTS:
 - Chain Restaurants (Food CR): Restaurant & cafe delivery mobile app with GetX, cart management & REST API (https://github.com/eng-haydar-abdo/chain_restaurants).
@@ -114,6 +115,7 @@ Motivated Computer Engineering & Automatic Control graduate (Ranked 4th) and Red
 EDUCATION:
 Latakia University – B.Sc. in Computer Engineering & Automatic Control (2026)
 Academic Standing: Ranked 4th in the academic cohort.
+Cumulative GPA: 81.23%.
 
 EXPERIENCE:
 - Focal X Academy (Mar 2026 - Aug 2026): Cyber Security Training Mentor (31 sessions, 19 trainees).
@@ -135,7 +137,7 @@ Latakia, Syria | +963 934044938 | eng.haydar.abdo@gmail.com
 LinkedIn: linkedin.com/in/eng-haydar-abdo | GitHub: github.com/eng-haydar-abdo
 
 COMPUTER ENGINEERING & AUTOMATIC CONTROL (4TH RANK) | AI & SOFTWARE CRAFTSMANSHIP
-Latakia University (2026). Specializing in Flutter mobile development and cybersecurity red teaming.`;
+Latakia University (2026) · Cumulative GPA: 81.23%. Specializing in Flutter mobile development and cybersecurity red teaming.`;
     }
 
     navigator.clipboard.writeText(plainText);
@@ -342,6 +344,9 @@ Latakia University (2026). Specializing in Flutter mobile development and cybers
                     <span>Graduated: 2026</span>
                     <p className="font-semibold text-amber-600 dark:text-amber-400">
                       Ranked 4th in Academic Cohort
+                    </p>
+                    <p className="font-semibold text-slate-600 dark:text-slate-300">
+                      Cumulative GPA: 81.23%
                     </p>
                   </div>
                 </div>
