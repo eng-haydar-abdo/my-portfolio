@@ -63,7 +63,7 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
       command: 'init --engineer="Haydar Thaeer Abdo"',
       output:
         'Haydar Thaeer Abdo [v2.4 LTS]\n' +
-        'B.Sc. Computer Engineering & Automatic Control · Latakia University (3rd in Cohort)\n' +
+        'B.Sc. Computer Engineering & Automatic Control · Latakia University (4th in Cohort)\n' +
         'Flutter Developer & Red Team Penetration Tester (1st of 25 at Focal X)\n' +
         'Direct PDF Downloads ready: "cv flutter", "cv cyber", "cv ai" or click the download buttons below.',
     },
@@ -109,7 +109,7 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
       response =
         'Name: Eng. Haydar Thaeer Abdo\n' +
         'Degree: B.Sc. in Computer Engineering & Automatic Control, Latakia University (2026)\n' +
-        'Standing: Ranked 3rd in the academic cohort\n' +
+        'Standing: Ranked 4th in the academic cohort\n' +
         'Security: Junior Penetration Tester & Former Mentor (Focal X Academy)\n' +
         'Location: Latakia, Syria · Open to Worldwide Remote Engagements';
     } else if (lower === 'skills') {
@@ -175,7 +175,7 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
     } else if (lower === 'rank') {
       response =
         'DISTINCTIONS:\n' +
-        '  ★ Latakia University: Ranked 3rd across entire academic cohort (B.Sc. Computer Engineering & Automatic Control)\n' +
+        '  ★ Latakia University: Ranked 4th across entire academic cohort (B.Sc. Computer Engineering & Automatic Control)\n' +
         '  ★ Focal X Academy: Ranked 1st of 25 trainees in Cyber Security Penetration Testing\n' +
         '  ★ Focal X Mentorship: Promoted to Mentor, training 19 students over 31 sessions';
     } else if (lower === 'nmap-scan') {

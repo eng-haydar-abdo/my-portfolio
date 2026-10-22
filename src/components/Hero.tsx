@@ -274,7 +274,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, activeTrack }) => {
                       {isRtl ? 'م. حيدر ثائر عبدو' : 'Eng. Haydar Abdo'}
                     </p>
                     <p className="text-[11px] text-slate-200 drop-shadow-md">
-                      {isRtl ? 'هندسة حاسبات وتحكم آلي (المرتبة 3)' : 'B.Sc. Computer Engineering & Automatic Control (3rd Rank)'}
+                      {isRtl ? 'هندسة حاسبات وتحكم آلي (المرتبة 4)' : 'B.Sc. Computer Engineering & Automatic Control (4th Rank)'}
                     </p>
                   </motion.div>
                 </div>

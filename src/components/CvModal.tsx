@@ -83,11 +83,11 @@ Portfolio: https://eng-haydar-abdo.github.io/my-portfolio/
 
 FLUTTER MOBILE APPLICATION DEVELOPER | COMPUTER ENGINEERING & AUTOMATIC CONTROL
 Summary:
-Computer Engineering & Automatic Control graduate (Latakia University, ranked 3rd in academic cohort) and certified Flutter Developer (Lvl.1 & Lvl.2, Focal X Academy). Experienced in architecting cross-platform iOS/Android apps with Dart, Clean Architecture, GetX, and Provider.
+Computer Engineering & Automatic Control graduate (Latakia University, ranked 4th in academic cohort) and certified Flutter Developer (Lvl.1 & Lvl.2, Focal X Academy). Experienced in architecting cross-platform iOS/Android apps with Dart, Clean Architecture, GetX, and Provider.
 
 EDUCATION:
 Latakia University – B.Sc. in Computer Engineering & Automatic Control (2026)
-Academic Standing: Ranked 3rd in the academic cohort.
+Academic Standing: Ranked 4th in the academic cohort.
 
 KEY PROJECTS:
 - Chain Restaurants (Food CR): Restaurant & cafe delivery mobile app with GetX, cart management & REST API (https://github.com/eng-haydar-abdo/chain_restaurants).
@@ -109,11 +109,11 @@ Portfolio: https://eng-haydar-abdo.github.io/my-portfolio/
 
 CYBER SECURITY | JUNIOR PENETRATION TESTER (RED TEAM) | COMPUTER ENGINEERING & AUTOMATIC CONTROL
 Summary:
-Motivated Computer Engineering & Automatic Control graduate (Ranked 3rd) and Red Team Penetration Tester with hands-on experience across the full pentest lifecycle (OSINT, recon, enumeration, exploitation, privilege escalation, reporting). Finished 1st out of 25 trainees in Focal X Academy and coached 19 incoming trainees across 31 sessions with an 80% improvement in performance.
+Motivated Computer Engineering & Automatic Control graduate (Ranked 4th) and Red Team Penetration Tester with hands-on experience across the full pentest lifecycle (OSINT, recon, enumeration, exploitation, privilege escalation, reporting). Finished 1st out of 25 trainees in Focal X Academy and coached 19 incoming trainees across 31 sessions with an 80% improvement in performance.
 
 EDUCATION:
 Latakia University – B.Sc. in Computer Engineering & Automatic Control (2026)
-Academic Standing: Ranked 3rd in the academic cohort.
+Academic Standing: Ranked 4th in the academic cohort.
 
 EXPERIENCE:
 - Focal X Academy (Mar 2026 - Aug 2026): Cyber Security Training Mentor (31 sessions, 19 trainees).
@@ -134,7 +134,7 @@ TECHNICAL SKILLS:
 Latakia, Syria | +963 934044938 | eng.haydar.abdo@gmail.com
 LinkedIn: linkedin.com/in/eng-haydar-abdo | GitHub: github.com/eng-haydar-abdo
 
-COMPUTER ENGINEERING & AUTOMATIC CONTROL (3RD RANK) | AI & SOFTWARE CRAFTSMANSHIP
+COMPUTER ENGINEERING & AUTOMATIC CONTROL (4TH RANK) | AI & SOFTWARE CRAFTSMANSHIP
 Latakia University (2026). Specializing in Flutter mobile development and cybersecurity red teaming.`;
     }
 
@@ -148,14 +148,14 @@ Latakia University (2026). Specializing in Flutter mobile development and cybers
       ? 'FLUTTER MOBILE APPLICATION DEVELOPER · COMPUTER ENGINEERING'
       : activeCv === 'cyber'
       ? 'CYBER SECURITY · JUNIOR PENETRATION TESTER (RED TEAM) · COMPUTER ENGINEERING'
-      : 'COMPUTER ENGINEERING & AUTOMATIC CONTROL (3RD RANK) · JUNIOR AI DEVELOPER';
+      : 'COMPUTER ENGINEERING & AUTOMATIC CONTROL (4TH RANK) · JUNIOR AI DEVELOPER';
 
   const summaryText =
     activeCv === 'flutter'
-      ? 'Computer Engineering & Automatic Control graduate (Latakia University, ranked 3rd in academic cohort) and certified Flutter Application Developer (Lvl.1 & Lvl.2, Focal X Academy). Experienced in architecting robust, cross-platform Android and iOS mobile applications utilizing Dart, Clean Architecture, GetX, Provider, SQLite, Hive, and RESTful API integrations. Strong background in system fundamentals, responsive UX, and multi-language RTL support.'
+      ? 'Computer Engineering & Automatic Control graduate (Latakia University, ranked 4th in academic cohort) and certified Flutter Application Developer (Lvl.1 & Lvl.2, Focal X Academy). Experienced in architecting robust, cross-platform Android and iOS mobile applications utilizing Dart, Clean Architecture, GetX, Provider, SQLite, Hive, and RESTful API integrations. Strong background in system fundamentals, responsive UX, and multi-language RTL support.'
       : activeCv === 'cyber'
-      ? 'Motivated Computer Engineering & Automatic Control graduate (Latakia University, ranked 3rd in cohort) and Red Team Penetration Tester with hands-on, methodology-driven experience across the penetration testing lifecycle (OSINT, recon, scanning, enumeration, exploitation, privilege escalation, reporting). Finished 1st out of 25 trainees in an intensive program, then promoted to Training Mentor coaching 19 trainees across 31 live sessions with an 80% improvement in assessment performance.'
-      : 'Computer Engineering & Automatic Control graduate with hands-on experience in machine learning, deep learning, and computer vision, gained through coursework, a robotics graduation project, and independent practice with Python’s data-science ecosystem. Complements this with production full-stack development and cybersecurity penetration testing. Ranked 3rd in academic cohort.';
+      ? 'Motivated Computer Engineering & Automatic Control graduate (Latakia University, ranked 4th in cohort) and Red Team Penetration Tester with hands-on, methodology-driven experience across the penetration testing lifecycle (OSINT, recon, scanning, enumeration, exploitation, privilege escalation, reporting). Finished 1st out of 25 trainees in an intensive program, then promoted to Training Mentor coaching 19 trainees across 31 live sessions with an 80% improvement in assessment performance.'
+      : 'Computer Engineering & Automatic Control graduate with hands-on experience in machine learning, deep learning, and computer vision, gained through coursework, a robotics graduation project, and independent practice with Python’s data-science ecosystem. Complements this with production full-stack development and cybersecurity penetration testing. Ranked 4th in academic cohort.';
 
   return (
     <AnimatePresence>
@@ -341,7 +341,7 @@ Latakia University (2026). Specializing in Flutter mobile development and cybers
                   <div className="text-right sm:text-right text-xs font-mono text-slate-500">
                     <span>Graduated: 2026</span>
                     <p className="font-semibold text-amber-600 dark:text-amber-400">
-                      Ranked 3rd in Academic Cohort
+                      Ranked 4th in Academic Cohort
                     </p>
                   </div>
                 </div>
