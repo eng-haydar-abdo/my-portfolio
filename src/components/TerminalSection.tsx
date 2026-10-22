@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Language } from '../types/portfolio';
-import { GOOGLE_DRIVE_LINKS, TRANSLATIONS } from '../data/translations';
+import { GOOGLE_DRIVE_CV_DOWNLOAD_LINKS, TRANSLATIONS } from '../data/translations';
 import { RefreshCw, CornerDownLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -15,7 +15,7 @@ interface CommandLog {
   isError?: boolean;
 }
 
-const openCvLink = (url: string) => {
+const downloadCv = (url: string) => {
   window.open(url, '_blank', 'noopener,noreferrer');
 };
 
@@ -30,7 +30,7 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
         'Haydar Thaeer Abdo [v2.4 LTS]\n' +
         'B.Sc. Computer Engineering & Automatic Control · Latakia University (4th in Cohort)\n' +
         'Flutter Developer & Red Team Penetration Tester (1st of 25 at Focal X)\n' +
-        'Current Google Drive CVs: "cv general", "cv flutter", "cv cyber", "cv ai", and "cv frontend".',
+        'Google Drive CV downloads: "cv general", "cv flutter", "cv cyber", "cv ai", and "cv frontend".',
     },
   ]);
 
@@ -62,11 +62,11 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
         '  whoami          - Engineering background and academic cohort rank\n' +
         '  skills          - Breakdown of Flutter, Red Teaming, and AI proficiencies\n' +
         '  projects        - List of active mobile apps and penetration engagements\n' +
-        '  cv general      - Open the comprehensive CV in Google Drive\n' +
-        '  cv flutter      - Open the Flutter CV in Google Drive\n' +
-        '  cv cyber        - Open the Cyber Security CV in Google Drive\n' +
-        '  cv ai           - Open the AI / ML CV in Google Drive\n' +
-        '  cv frontend     - Open the Front-end CV in Google Drive\n' +
+        '  cv general      - Download the comprehensive CV from Google Drive\n' +
+        '  cv flutter      - Download the Flutter CV from Google Drive\n' +
+        '  cv cyber        - Download the Cyber Security CV from Google Drive\n' +
+        '  cv ai           - Download the AI / ML CV from Google Drive\n' +
+        '  cv frontend     - Download the Front-end CV from Google Drive\n' +
         '  rank            - Show academic and competition rankings\n' +
         '  nmap-scan       - Run simulated offensive reconnaissance probe on lab target\n' +
         '  flutter-run     - Simulate Flutter clean architecture build workflow\n' +
@@ -103,8 +103,8 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
       lower === 'download cv flutter' ||
       lower === 'flutter cv'
     ) {
-      openCvLink(GOOGLE_DRIVE_LINKS.cv.flutter);
-      response = '[✓] Opening the current Flutter CV in Google Drive in a new tab.';
+      downloadCv(GOOGLE_DRIVE_CV_DOWNLOAD_LINKS.flutter);
+      response = '[✓] Downloading the current Flutter CV from Google Drive.';
     } else if (
       lower === 'cv cyber' ||
       lower === 'download cyber cv' ||
@@ -112,8 +112,8 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
       lower === 'cyber cv' ||
       lower === 'cv pentest'
     ) {
-      openCvLink(GOOGLE_DRIVE_LINKS.cv.cyber);
-      response = '[✓] Opening the current Cyber Security CV in Google Drive in a new tab.';
+      downloadCv(GOOGLE_DRIVE_CV_DOWNLOAD_LINKS.cyber);
+      response = '[✓] Downloading the current Cyber Security CV from Google Drive.';
     } else if (
       lower === 'cv ai' ||
       lower === 'cv engineer' ||
@@ -121,27 +121,27 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
       lower === 'download cv ai' ||
       lower === 'ai cv'
     ) {
-      openCvLink(GOOGLE_DRIVE_LINKS.cv.ai);
-      response = '[✓] Opening the current AI / ML CV in Google Drive in a new tab.';
+      downloadCv(GOOGLE_DRIVE_CV_DOWNLOAD_LINKS.ai);
+      response = '[✓] Downloading the current AI / ML CV from Google Drive.';
     } else if (
       lower === 'cv general' ||
       lower === 'cv full' ||
       lower === 'full cv' ||
       lower === 'comprehensive cv'
     ) {
-      openCvLink(GOOGLE_DRIVE_LINKS.cv.general);
-      response = '[✓] Opening the current comprehensive CV in Google Drive in a new tab.';
+      downloadCv(GOOGLE_DRIVE_CV_DOWNLOAD_LINKS.general);
+      response = '[✓] Downloading the current comprehensive CV from Google Drive.';
     } else if (
       lower === 'cv frontend' ||
       lower === 'cv front-end' ||
       lower === 'frontend cv' ||
       lower === 'front-end cv'
     ) {
-      openCvLink(GOOGLE_DRIVE_LINKS.cv.frontend);
-      response = '[✓] Opening the current Front-end CV in Google Drive in a new tab.';
+      downloadCv(GOOGLE_DRIVE_CV_DOWNLOAD_LINKS.frontend);
+      response = '[✓] Downloading the current Front-end CV from Google Drive.';
     } else if (lower === 'cv' || lower === 'download cv') {
       response =
-        'Choose a CV to open in Google Drive:\n' +
+        'Choose a CV to download from Google Drive:\n' +
         '  - "cv general"  -> Comprehensive CV\n' +
         '  - "cv flutter"  -> Flutter CV\n' +
         '  - "cv cyber"    -> Cyber Security CV\n' +

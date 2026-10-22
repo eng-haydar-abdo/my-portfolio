@@ -310,6 +310,14 @@ export const GOOGLE_DRIVE_LINKS = {
   },
 };
 
+export const GOOGLE_DRIVE_CV_DOWNLOAD_LINKS = {
+  general: 'https://drive.google.com/uc?export=download&id=1QKy5rgLAJws4Q1u1l7pYLQ9iwC6vr83E',
+  flutter: 'https://drive.google.com/uc?export=download&id=1K_zriUb5nSuTANdK0d21IwmWM5Vp9vSW',
+  cyber: 'https://drive.google.com/uc?export=download&id=1cEyulRjX_7U3zd0jTT2XPk7C5aAl0y2A',
+  ai: 'https://drive.google.com/uc?export=download&id=1_jph7G_3N0U7i877PLj0W1q2qjKgYh8g',
+  frontend: 'https://drive.google.com/uc?export=download&id=1Rdjhf4pQcwdz7Hcm-7xtJ2XNTH5juHO_',
+};
+
 export const CERTIFICATES: Certificate[] = [
   {
     id: 'cert-cyber',
