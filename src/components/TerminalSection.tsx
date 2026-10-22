@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Language } from '../types/portfolio';
-import { TRANSLATIONS } from '../data/translations';
+import { GOOGLE_DRIVE_LINKS, TRANSLATIONS } from '../data/translations';
 import { RefreshCw, CornerDownLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -15,43 +15,8 @@ interface CommandLog {
   isError?: boolean;
 }
 
-// '/my-portfolio/' on GitHub Pages, '/' in local dev
-const BASE = import.meta.env.BASE_URL;
-
-/**
- * Triggers a clean, direct browser download of the PDF file to the Downloads folder
- */
-const downloadPdfFile = async (filePath: string, fileName: string) => {
-  try {
-    const response = await fetch(filePath);
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    const blob = await response.blob();
-    const pdfBlob = new Blob([blob], { type: 'application/pdf' });
-    const blobUrl = window.URL.createObjectURL(pdfBlob);
-    const link = document.createElement('a');
-    link.style.display = 'none';
-    link.href = blobUrl;
-    link.download = fileName;
-    link.setAttribute('download', fileName);
-    document.body.appendChild(link);
-    link.click();
-    setTimeout(() => {
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(blobUrl);
-    }, 2000);
-  } catch (err) {
-    console.error('Blob download failed, using standard anchor download fallback', err);
-    const link = document.createElement('a');
-    link.style.display = 'none';
-    link.href = filePath;
-    link.download = fileName;
-    link.setAttribute('download', fileName);
-    document.body.appendChild(link);
-    link.click();
-    setTimeout(() => {
-      document.body.removeChild(link);
-    }, 2000);
-  }
+const openCvLink = (url: string) => {
+  window.open(url, '_blank', 'noopener,noreferrer');
 };
 
 export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCvModal }) => {
@@ -65,7 +30,7 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
         'Haydar Thaeer Abdo [v2.4 LTS]\n' +
         'B.Sc. Computer Engineering & Automatic Control · Latakia University (4th in Cohort)\n' +
         'Flutter Developer & Red Team Penetration Tester (1st of 25 at Focal X)\n' +
-        'Direct PDF Downloads ready: "cv flutter", "cv cyber", "cv ai" or click the download buttons below.',
+        'Current Google Drive CVs: "cv general", "cv flutter", "cv cyber", "cv ai", and "cv frontend".',
     },
   ]);
 
@@ -97,9 +62,11 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
         '  whoami          - Engineering background and academic cohort rank\n' +
         '  skills          - Breakdown of Flutter, Red Teaming, and AI proficiencies\n' +
         '  projects        - List of active mobile apps and penetration engagements\n' +
-        '  cv flutter      - Direct download Flutter Developer CV (/Haydar_Abdo_Flutter_CV.pdf)\n' +
-        '  cv cyber        - Direct download Cyber Security CV (/Haydar_Abdo_Cyber_Security_CV.pdf)\n' +
-        '  cv ai           - Direct download AI / ML CV (/Haydar_Abdo_AI_CV.pdf)\n' +
+        '  cv general      - Open the comprehensive CV in Google Drive\n' +
+        '  cv flutter      - Open the Flutter CV in Google Drive\n' +
+        '  cv cyber        - Open the Cyber Security CV in Google Drive\n' +
+        '  cv ai           - Open the AI / ML CV in Google Drive\n' +
+        '  cv frontend     - Open the Front-end CV in Google Drive\n' +
         '  rank            - Show academic and competition rankings\n' +
         '  nmap-scan       - Run simulated offensive reconnaissance probe on lab target\n' +
         '  flutter-run     - Simulate Flutter clean architecture build workflow\n' +
@@ -136,10 +103,8 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
       lower === 'download cv flutter' ||
       lower === 'flutter cv'
     ) {
-      downloadPdfFile(`${BASE}Haydar_Abdo_Flutter_CV.pdf`, 'Haydar_Abdo_Flutter_CV.pdf');
-      response =
-        '[✓] Direct download initiated: /Haydar_Abdo_Flutter_CV.pdf\n' +
-        '[✓] Saving file to Downloads folder: "Haydar_Abdo_Flutter_CV.pdf" (PDF Document, ~380 KB)';
+      openCvLink(GOOGLE_DRIVE_LINKS.cv.flutter);
+      response = '[✓] Opening the current Flutter CV in Google Drive in a new tab.';
     } else if (
       lower === 'cv cyber' ||
       lower === 'download cyber cv' ||
@@ -147,13 +112,8 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
       lower === 'cyber cv' ||
       lower === 'cv pentest'
     ) {
-      downloadPdfFile(
-        `${BASE}Haydar_Abdo_Cyber_Security_CV.pdf`,
-        'Haydar_Abdo_Cyber_Security_CV.pdf'
-      );
-      response =
-        '[✓] Direct download initiated: /Haydar_Abdo_Cyber_Security_CV.pdf\n' +
-        '[✓] Saving file to Downloads folder: "Haydar_Abdo_Cyber_Security_CV.pdf" (PDF Document, ~366 KB)';
+      openCvLink(GOOGLE_DRIVE_LINKS.cv.cyber);
+      response = '[✓] Opening the current Cyber Security CV in Google Drive in a new tab.';
     } else if (
       lower === 'cv ai' ||
       lower === 'cv engineer' ||
@@ -161,17 +121,32 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
       lower === 'download cv ai' ||
       lower === 'ai cv'
     ) {
-      downloadPdfFile(`${BASE}Haydar_Abdo_AI_CV.pdf`, 'Haydar_Abdo_AI_CV.pdf');
-      response =
-        '[✓] Direct download initiated: /Haydar_Abdo_AI_CV.pdf\n' +
-        '[✓] Saving file to Downloads folder: "Haydar_Abdo_AI_CV.pdf" (PDF Document, ~345 KB)';
+      openCvLink(GOOGLE_DRIVE_LINKS.cv.ai);
+      response = '[✓] Opening the current AI / ML CV in Google Drive in a new tab.';
+    } else if (
+      lower === 'cv general' ||
+      lower === 'cv full' ||
+      lower === 'full cv' ||
+      lower === 'comprehensive cv'
+    ) {
+      openCvLink(GOOGLE_DRIVE_LINKS.cv.general);
+      response = '[✓] Opening the current comprehensive CV in Google Drive in a new tab.';
+    } else if (
+      lower === 'cv frontend' ||
+      lower === 'cv front-end' ||
+      lower === 'frontend cv' ||
+      lower === 'front-end cv'
+    ) {
+      openCvLink(GOOGLE_DRIVE_LINKS.cv.frontend);
+      response = '[✓] Opening the current Front-end CV in Google Drive in a new tab.';
     } else if (lower === 'cv' || lower === 'download cv') {
       response =
-        'Please specify which CV to download directly:\n' +
-        '  - "cv flutter"  -> Downloads Haydar_Abdo_Flutter_CV.pdf\n' +
-        '  - "cv cyber"    -> Downloads Haydar_Abdo_Cyber_Security_CV.pdf\n' +
-        '  - "cv ai"       -> Downloads Haydar_Abdo_AI_CV.pdf\n' +
-        'Or click any of the direct download buttons in the panel below.';
+        'Choose a CV to open in Google Drive:\n' +
+        '  - "cv general"  -> Comprehensive CV\n' +
+        '  - "cv flutter"  -> Flutter CV\n' +
+        '  - "cv cyber"    -> Cyber Security CV\n' +
+        '  - "cv ai"       -> AI / ML CV\n' +
+        '  - "cv frontend" -> Front-end CV';
     } else if (lower === 'rank') {
       response =
         'DISTINCTIONS:\n' +
@@ -232,9 +207,11 @@ export const TerminalSection: React.FC<TerminalSectionProps> = ({ lang, onOpenCv
     'whoami',
     'skills',
     'projects',
+    'cv general',
     'cv flutter',
     'cv cyber',
     'cv ai',
+    'cv frontend',
     'nmap-scan',
     'flutter-run',
     'rank',
