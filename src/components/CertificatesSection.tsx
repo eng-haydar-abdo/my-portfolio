@@ -146,20 +146,30 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
                     </button>
                     <div className="flex items-center gap-1.5">
                       {cert.driveUrl && cert.driveUrl.trim().startsWith('http') && (
-                        <a
-                          href={cert.driveUrl.trim()}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={isRtl ? 'فتح الوثيقة في Google Drive' : 'Open credential in Google Drive'}
-                          className="inline-flex items-center gap-1.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-                          title={isRtl ? 'عرض في Google Drive' : 'Open in Google Drive'}
-                        >
-                          <ExternalLink className="h-3.5 w-3.5 opacity-60 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" aria-hidden="true" />
-                          <span className="inline-flex items-center gap-1 rounded bg-emerald-500/10 dark:bg-emerald-500/20 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 transition-colors">
-                            <span>Drive</span>
-                            <ExternalLink className="h-2.5 w-2.5" aria-hidden="true" />
-                          </span>
-                        </a>
+                        <>
+                          <button
+                            type="button"
+                            onClick={() => setSelectedCert(cert)}
+                            aria-haspopup="dialog"
+                            aria-label={`${t.viewCredential}: ${isRtl ? cert.titleAr : cert.title}`}
+                            className="inline-flex items-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                            title={t.viewCredential}
+                          >
+                            <ExternalLink className="h-3.5 w-3.5 opacity-60 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" aria-hidden="true" />
+                          </button>
+                          <a
+                            href={cert.driveUrl.trim()}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={isRtl ? 'فتح الوثيقة في Google Drive' : 'Open credential in Google Drive'}
+                            className="inline-flex items-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                            title={isRtl ? 'عرض في Google Drive' : 'Open in Google Drive'}
+                          >
+                            <span className="inline-flex items-center gap-1 rounded bg-emerald-500/10 dark:bg-emerald-500/20 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 transition-colors">
+                              <span>Drive</span>
+                              <ExternalLink className="h-2.5 w-2.5" aria-hidden="true" />
+                            </span>
+                          </a>
                       )}
                     </div>
                   </div>
