@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Certificate, Language } from '../types/portfolio';
 import { CERTIFICATES, TRANSLATIONS } from '../data/translations';
-import { Award, FileText, ExternalLink, Download, X, QrCode, ShieldCheck } from 'lucide-react';
+import { Award, FileText, ExternalLink, X, QrCode, ShieldCheck } from 'lucide-react';
 import { fadeUp, stagger, viewportOnce, EASE_OUT } from '../lib/motion';
 import { useDialogAccessibility } from '../lib/useDialogAccessibility';
 
@@ -11,11 +11,6 @@ interface CertificatesSectionProps {
 }
 
 type Filter = 'all' | 'certificate' | 'recommendation';
-
-const getGoogleDriveDownloadUrl = (url: string) => {
-  const fileId = url.match(/\/file\/d\/([^/]+)/)?.[1];
-  return fileId ? `https://drive.google.com/uc?export=download&id=${fileId}` : url;
-};
 
 export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }) => {
   const t = TRANSLATIONS[lang].certifications;
@@ -152,17 +147,17 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
                     <div className="flex items-center gap-1.5">
                       {cert.driveUrl && cert.driveUrl.trim().startsWith('http') && (
                         <a
-                          href={getGoogleDriveDownloadUrl(cert.driveUrl.trim())}
+                          href={cert.driveUrl.trim()}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label={isRtl ? 'تنزيل الوثيقة من Google Drive' : 'Download credential from Google Drive'}
+                          aria-label={isRtl ? 'فتح الوثيقة في Google Drive' : 'Open credential in Google Drive'}
                           className="inline-flex items-center gap-1.5 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-                          title={isRtl ? 'تنزيل من Google Drive' : 'Download from Google Drive'}
+                          title={isRtl ? 'عرض في Google Drive' : 'Open in Google Drive'}
                         >
                           <ExternalLink className="h-3.5 w-3.5 opacity-60 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" aria-hidden="true" />
                           <span className="inline-flex items-center gap-1 rounded bg-emerald-500/10 dark:bg-emerald-500/20 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 transition-colors">
-                            <span>{isRtl ? 'تنزيل' : 'Download'}</span>
-                            <Download className="h-2.5 w-2.5" aria-hidden="true" />
+                            <span>Drive</span>
+                            <ExternalLink className="h-2.5 w-2.5" aria-hidden="true" />
                           </span>
                         </a>
                       )}
