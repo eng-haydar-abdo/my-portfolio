@@ -170,6 +170,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
                               <ExternalLink className="h-2.5 w-2.5" aria-hidden="true" />
                             </span>
                           </a>
+                        </>
                       )}
                     </div>
                   </div>
