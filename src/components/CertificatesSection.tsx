@@ -134,13 +134,13 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
                     </p>
                   </div>
 
-                  <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300">
+                  <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 ">
                     <button
                       type="button"
                       onClick={() => setSelectedCert(cert)}
                       aria-haspopup="dialog"
                       aria-label={`${t.viewCredential}: ${isRtl ? cert.titleAr : cert.title}`}
-                      className="group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors"
+                      className="group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors "
                     >
                       {t.viewCredential}
                     </button>
@@ -152,7 +152,7 @@ export const CertificatesSection: React.FC<CertificatesSectionProps> = ({ lang }
                             onClick={() => setSelectedCert(cert)}
                             aria-haspopup="dialog"
                             aria-label={`${t.viewCredential}: ${isRtl ? cert.titleAr : cert.title}`}
-                            className="inline-flex items-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+                            className="inline-flex items-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 cursor-pointer"
                             title={t.viewCredential}
                           >
                             <ExternalLink className="h-3.5 w-3.5 opacity-60 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" aria-hidden="true" />
