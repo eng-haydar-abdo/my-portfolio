@@ -290,7 +290,7 @@ export const CV_DOWNLOAD_FILES = {
 // Centralized Google Drive Links for CVs and Certificates
 export const GOOGLE_DRIVE_LINKS = {
   cv: {
-    general: 'https://drive.google.com/file/d/1QKy5rgLAJws4Q1u1l7pYLQ9iwC6vr83E/view?usp=sharing',
+    general: 'https://drive.google.com/file/d/1vdHSOsuo43b3zbEdB79-cD5w05M5eNgX/view?usp=sharing',
     flutter: 'https://drive.google.com/file/d/1K_zriUb5nSuTANdK0d21IwmWM5Vp9vSW/view?usp=sharing',
     cyber: 'https://drive.google.com/file/d/1cEyulRjX_7U3zd0jTT2XPk7C5aAl0y2A/view?usp=sharing',
     ai: 'https://drive.google.com/file/d/1_jph7G_3N0U7i877PLj0W1q2qjKgYh8g/view?usp=sharing',
@@ -311,7 +311,7 @@ export const GOOGLE_DRIVE_LINKS = {
 };
 
 export const GOOGLE_DRIVE_CV_DOWNLOAD_LINKS = {
-  general: 'https://drive.google.com/uc?export=download&id=1QKy5rgLAJws4Q1u1l7pYLQ9iwC6vr83E',
+  general: 'https://drive.google.com/uc?export=download&id=1vdHSOsuo43b3zbEdB79-cD5w05M5eNgX',
   flutter: 'https://drive.google.com/uc?export=download&id=1K_zriUb5nSuTANdK0d21IwmWM5Vp9vSW',
   cyber: 'https://drive.google.com/uc?export=download&id=1cEyulRjX_7U3zd0jTT2XPk7C5aAl0y2A',
   ai: 'https://drive.google.com/uc?export=download&id=1_jph7G_3N0U7i877PLj0W1q2qjKgYh8g',
